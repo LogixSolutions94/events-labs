@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+
+# Logs / temporaires
+*.log
+node_modules/
+.cache/
