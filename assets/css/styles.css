@@ -423,7 +423,7 @@ ul, ol { list-style: none; }
    FORMULES
    ========================================================================= */
 .pricing { background: var(--paper); }
-.plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; align-items: stretch; }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: stretch; }
 .plan {
   border: 1px solid var(--line-light); border-radius: var(--radius); padding: 1.8rem 1.6rem;
   display: flex; flex-direction: column; gap: 1rem; background: var(--paper);
@@ -435,7 +435,8 @@ ul, ol { list-style: none; }
 .plan__badge { position: absolute; top: -11px; inset-inline-start: 1.6rem; background: var(--gold); color: var(--paper); font-family: var(--mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: .35rem .7rem; border-radius: 100px; }
 .plan__name { font-family: var(--serif); font-weight: 420; font-size: 1.4rem; line-height: 1.1; }
 .plan__from { font-family: var(--mono); font-size: .78rem; letter-spacing: .04em; opacity: .85; }
-.plan__from strong { display: block; font-family: var(--serif); font-size: 1.7rem; font-weight: 400; letter-spacing: 0; color: var(--gold); margin-top: .25rem; }
+.plan__from strong { display: block; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; letter-spacing: 0; color: var(--gold); margin-top: .25rem; }
+[dir="rtl"] .plan__from strong { direction: ltr; text-align: right; }
 .plan--feature .plan__from strong { color: var(--champagne-soft); }
 .plan__feats { display: flex; flex-direction: column; gap: .65rem; margin-block: .4rem auto; }
 .plan__feats li { font-size: .88rem; line-height: 1.4; padding-block: .65rem; border-bottom: 1px solid var(--line-light); padding-inline-start: 1.2rem; position: relative; opacity: .88; }
@@ -443,7 +444,7 @@ ul, ol { list-style: none; }
 .plan--feature .plan__feats li::before { color: var(--champagne-soft); }
 .plan__btn { margin-top: .8rem; justify-content: center; }
 .plan--feature .btn--ghost { border-color: var(--line-dark); color: var(--paper); }
-.pricing__legal { margin-top: 1.8rem; font-family: var(--mono); font-size: .7rem; letter-spacing: .03em; opacity: .55; max-width: 70ch; }
+.pricing__legal { margin-top: 1.8rem; font-family: var(--mono); font-size: .92rem; line-height: 1.6; letter-spacing: .01em; opacity: .72; max-width: 72ch; }
 
 /* =========================================================================
    TÉMOIGNAGES
