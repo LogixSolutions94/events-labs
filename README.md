@@ -39,26 +39,31 @@ Dans `index.html` (section contact) : remplacer
 `Kouba, Alger — adresse à préciser` par l'adresse réelle, et la même chose dans
 le bloc `application/ld+json` (en-tête) + ajouter une carte Google Maps si voulu.
 
-### 3. Les vraies photos (le plus important)
-Les vignettes de la section **Réalisations** sont des **compositions de
-présentation** (dégradés + grain, aucune photo factice trompeuse). Pour mettre
-une vraie photo, dans chaque `<figure class="shot …">` remplacer :
+### 3. Les vraies photos / vidéos (le plus important)
+Les vignettes de la section **Réalisations** affichent pour l'instant de
+**courtes vidéos libres de droit** (Mixkit, `assets/video/work1…6.mp4`, 360p,
+chargées en lazy et lues seulement quand visibles). Elles sont là pour donner le
+ton — à remplacer par les **vrais événements** d'Events Labs dès que possible.
+
+Pour mettre votre propre média, dans le `<figure class="shot …">` concerné,
+remplacer la balise `<video class="shot__video" …>` par votre vidéo :
 
 ```html
-<div class="shot__media"></div>
+<video class="shot__video" muted loop playsinline preload="none"
+       data-src="assets/video/mon-mariage.mp4"></video>
 ```
 
-par :
+…ou par une photo (le CSS gère déjà `.shot__media img`) :
 
 ```html
-<div class="shot__media">
-  <img src="assets/img/realisations/mon-mariage.jpg" alt="Description de la déco" />
-</div>
+<img src="assets/img/realisations/mon-mariage.jpg" alt="Description de la déco" />
 ```
 
-et ajouter dans le CSS, si besoin, `.shot__media img { width:100%; height:100%; object-fit:cover; }`.
-👉 **Conseil studio :** garder le même *grade* (même teinte chaude) sur toutes
-les photos pour l'effet « shooting unique » ; le grain global du site les unifie.
+👉 **Conseil studio :** garder le même *grade* (mêmes teintes) sur tous les
+médias pour l'effet « collection cohérente » ; le grain global du site les unifie.
+
+> Le **contact** propose au choix **WhatsApp** ou **e-mail** (boutons + le
+> formulaire prépare l'un ou l'autre). Tout pointe vers les valeurs de `CONFIG`.
 
 ### 4. Chiffres & témoignages
 Ajuster les `data-count` (section stats) et les témoignages dans

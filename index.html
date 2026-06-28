@@ -325,7 +325,9 @@
         <div class="gallery">
           <!-- chaque .shot est un emplacement prêt à recevoir une vraie photo (voir README) -->
           <figure class="shot shot--tall reveal" data-cat="mariage" data-cursor="view" data-art="1">
-            <div class="shot__media"></div>
+            <div class="shot__media">
+              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work1.mp4"></video>
+            </div>
             <figcaption class="shot__cap">
               <span class="shot__cat" data-i18n="capMariage">Mariage</span>
               <span class="shot__name" data-i18n="proj1">Kosha « Nuit d'ambre »</span>
@@ -333,7 +335,9 @@
           </figure>
 
           <figure class="shot reveal" data-cat="tradition" data-cursor="view" data-art="2">
-            <div class="shot__media"></div>
+            <div class="shot__media">
+              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work2.mp4"></video>
+            </div>
             <figcaption class="shot__cap">
               <span class="shot__cat" data-i18n="capTradition">Henné</span>
               <span class="shot__name" data-i18n="proj2">Soirée henné « Safran »</span>
@@ -341,7 +345,9 @@
           </figure>
 
           <figure class="shot reveal" data-cat="gala" data-cursor="view" data-art="3">
-            <div class="shot__media"></div>
+            <div class="shot__media">
+              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work3.mp4"></video>
+            </div>
             <figcaption class="shot__cap">
               <span class="shot__cat" data-i18n="capGala">Gala</span>
               <span class="shot__name" data-i18n="proj3">Dîner de gala « Laiton »</span>
@@ -349,7 +355,9 @@
           </figure>
 
           <figure class="shot shot--wide reveal" data-cat="corporate" data-cursor="view" data-art="4">
-            <div class="shot__media"></div>
+            <div class="shot__media">
+              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work4.mp4"></video>
+            </div>
             <figcaption class="shot__cap">
               <span class="shot__cat" data-i18n="capCorporate">Corporate</span>
               <span class="shot__name" data-i18n="proj4">Lancement « Studio 21 »</span>
@@ -357,7 +365,9 @@
           </figure>
 
           <figure class="shot reveal" data-cat="mariage" data-cursor="view" data-art="5">
-            <div class="shot__media"></div>
+            <div class="shot__media">
+              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work5.mp4"></video>
+            </div>
             <figcaption class="shot__cap">
               <span class="shot__cat" data-i18n="capMariage">Mariage</span>
               <span class="shot__name" data-i18n="proj5">Allée & arche florale</span>
@@ -365,7 +375,9 @@
           </figure>
 
           <figure class="shot shot--tall reveal" data-cat="gala" data-cursor="view" data-art="6">
-            <div class="shot__media"></div>
+            <div class="shot__media">
+              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work6.mp4"></video>
+            </div>
             <figcaption class="shot__cap">
               <span class="shot__cat" data-i18n="capGala">Soirée</span>
               <span class="shot__name" data-i18n="proj6">Mise en lumière « Velours »</span>
@@ -533,6 +545,7 @@
 
           <div class="contact__actions reveal">
             <a class="btn btn--solid" data-wa href="#"><span data-i18n="ctaWa">Écrire sur WhatsApp</span></a>
+            <a class="btn btn--ghost" data-mail href="#"><span data-i18n="ctaEmail">Envoyer un e-mail</span></a>
             <a class="btn btn--ghost" data-call href="#"><span data-i18n="ctaCall">Appeler l'atelier</span></a>
           </div>
 
@@ -582,10 +595,13 @@
             <label for="f-msg" data-i18n="fMsg">Votre projet en quelques mots</label>
             <textarea id="f-msg" name="msg" rows="3"></textarea>
           </div>
+          <div class="form__actions">
           <button class="btn btn--solid form__submit" type="submit">
             <svg viewBox="0 0 24 24" class="ico-wa" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.43 1.32-1.96 1.37-.5.05-1.14.21-3.7-.79-3.12-1.23-5.1-4.42-5.26-4.63-.15-.21-1.25-1.66-1.25-3.17 0-1.51.79-2.25 1.07-2.56.28-.31.61-.39.81-.39.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.61.86 2.12.93 2.27.07.15.12.33.02.53-.1.21-.15.33-.3.51-.15.18-.32.4-.45.54-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.12 1.17 1.04 2.16 1.36 2.47 1.51.31.15.49.13.67-.08.18-.21.77-.9.98-1.21.21-.31.41-.26.69-.15.28.1 1.78.84 2.08.99.31.15.51.23.59.36.07.13.07.74-.18 1.43Z"/></svg>
             <span data-i18n="formSubmit">Envoyer sur WhatsApp</span>
           </button>
+          <button class="btn btn--ghost form__submit" type="button" id="quoteMail"><span data-i18n="formSubmitMail">Ou par e-mail</span></button>
+          </div>
         </form>
       </div>
     </section>

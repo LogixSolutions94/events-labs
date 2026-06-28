@@ -25,6 +25,11 @@ const WA_TEXT = {
   ar: "مرحبًا Events Labs 👋 أرغب في عرض سعر لمناسبتي.",
   en: "Hello Events Labs 👋 I'd like a quote for my event."
 };
+const MAIL = {
+  fr: { subject: "Demande de devis — Events Labs", body: "Bonjour Events Labs,\n\nJe souhaite un devis pour mon événement.\n\n" },
+  ar: { subject: "طلب عرض سعر — Events Labs", body: "مرحبًا Events Labs،\n\nأرغب في عرض سعر لمناسبتي.\n\n" },
+  en: { subject: "Quote request — Events Labs", body: "Hello Events Labs,\n\nI'd like a quote for my event.\n\n" }
+};
 const CURSOR_LABEL = { fr: "Voir", ar: "عرض", en: "View" };
 
 const $  = (s, c = document) => c.querySelector(s);
@@ -38,6 +43,10 @@ let currentLang = "fr";
 
 function waLink(lang = currentLang) {
   return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(WA_TEXT[lang] || WA_TEXT.fr)}`;
+}
+function mailLink(lang = currentLang) {
+  const m = MAIL[lang] || MAIL.fr;
+  return `mailto:${CONFIG.email}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`;
 }
 
 function applyLang(lang) {
@@ -66,6 +75,7 @@ function applyLang(lang) {
 
 function refreshLinks() {
   $$("[data-wa]").forEach(a => { a.href = waLink(); });
+  $$("[data-mail]").forEach(a => { a.href = mailLink(); });
   $$("[data-call]").forEach(a => { a.href = "tel:" + CONFIG.phoneDial; });
   $$("[data-phone-display]").forEach(el => { el.textContent = CONFIG.phoneDisplay; });
   $$("[data-mail-display]").forEach(el => { el.textContent = CONFIG.email; });
@@ -185,46 +195,92 @@ filters.forEach(btn => {
 });
 
 /* =========================================================================
-   8. Lightbox
+   8. Vidéos des vignettes : chargement paresseux + lecture si visible
+   ========================================================================= */
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute("src") && v.dataset.src) v.setAttribute("src", v.dataset.src);
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.2 });
+  $$(".shot__video").forEach(v => {
+    v.addEventListener("playing", () => v.classList.add("is-playing"));
+    vio.observe(v);
+  });
+}
+
+/* =========================================================================
+   9. Lightbox (vidéo / photo / composition)
    ========================================================================= */
 const lightbox = $("#lightbox");
 const lbInner = $(".lightbox__inner");
 function openLightbox(shot) {
-  const media = shot.querySelector(".shot__media");
-  const cs = getComputedStyle(media);
   const cat = shot.querySelector(".shot__cat")?.textContent || "";
   const name = shot.querySelector(".shot__name")?.textContent || "";
-  lbInner.style.backgroundImage = cs.backgroundImage;
-  lbInner.style.backgroundColor = cs.backgroundColor;
-  lbInner.innerHTML = `<div class="lb-cap"><span class="lb-cat">${cat}</span><span class="lb-name">${name}</span></div>`;
+  const vid = shot.querySelector(".shot__video");
+  const img = shot.querySelector(".shot__media img");
+  const fill = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
+  lbInner.style.backgroundImage = "";
+  lbInner.style.backgroundColor = "var(--ink-2)";
+  let media = "";
+  if (vid) {
+    const src = vid.getAttribute("src") || vid.dataset.src;
+    media = `<video src="${src}" autoplay loop muted playsinline controls style="${fill}"></video>`;
+  } else if (img) {
+    media = `<img src="${img.src}" alt="" style="${fill}" />`;
+  } else {
+    const cs = getComputedStyle(shot.querySelector(".shot__media"));
+    lbInner.style.backgroundImage = cs.backgroundImage;
+    lbInner.style.backgroundColor = cs.backgroundColor;
+  }
+  lbInner.innerHTML = media + `<div class="lb-cap"><span class="lb-cat">${cat}</span><span class="lb-name">${name}</span></div>`;
   if (typeof lightbox.showModal === "function") lightbox.showModal();
 }
 $$(".shot").forEach(shot => shot.addEventListener("click", () => openLightbox(shot)));
 $(".lightbox__close").addEventListener("click", () => lightbox.close());
 lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+lightbox.addEventListener("close", () => { lbInner.innerHTML = ""; });
 
 /* =========================================================================
-   9. Formulaire -> WhatsApp
+   10. Formulaire -> WhatsApp ou e-mail
    ========================================================================= */
 const form = $("#quoteForm");
 if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const LABELS = {
+    fr: { intro: "Bonjour Events Labs 👋", n: "Nom", t: "Événement", d: "Date", m: "Projet" },
+    ar: { intro: "مرحبًا Events Labs 👋", n: "الاسم", t: "المناسبة", d: "التاريخ", m: "المشروع" },
+    en: { intro: "Hello Events Labs 👋", n: "Name", t: "Event", d: "Date", m: "Project" }
+  };
+  function formMessage() {
+    const L = LABELS[currentLang] || LABELS.fr;
     const name = $("#f-name").value.trim();
     const type = $("#f-type").value;
     const date = $("#f-date").value.trim();
     const msg  = $("#f-msg").value.trim();
-    const L = {
-      fr: { intro: "Bonjour Events Labs 👋", n: "Nom", t: "Événement", d: "Date", m: "Projet" },
-      ar: { intro: "مرحبًا Events Labs 👋", n: "الاسم", t: "المناسبة", d: "التاريخ", m: "المشروع" },
-      en: { intro: "Hello Events Labs 👋", n: "Name", t: "Event", d: "Date", m: "Project" }
-    }[currentLang] || {};
-    let text = `${L.intro}\n`;
-    if (name) text += `\n${L.n}: ${name}`;
-    if (type) text += `\n${L.t}: ${type}`;
-    if (date) text += `\n${L.d}: ${date}`;
-    if (msg)  text += `\n${L.m}: ${msg}`;
-    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    let t = `${L.intro}\n`;
+    if (name) t += `\n${L.n}: ${name}`;
+    if (type) t += `\n${L.t}: ${type}`;
+    if (date) t += `\n${L.d}: ${date}`;
+    if (msg)  t += `\n${L.m}: ${msg}`;
+    return t;
+  }
+  // WhatsApp (envoi principal)
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(formMessage())}`, "_blank", "noopener");
+  });
+  // E-mail (alternative)
+  const mailBtn = $("#quoteMail");
+  if (mailBtn) mailBtn.addEventListener("click", () => {
+    const m = MAIL[currentLang] || MAIL.fr;
+    window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(formMessage())}`;
   });
 }
 

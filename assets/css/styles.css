@@ -360,6 +360,12 @@ ul, ol { list-style: none; }
 .shot__name { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
 .shot.is-hidden { display: none; }
 
+/* Médias des vignettes : vidéo (ou photo) qui remplit la tuile.
+   La vidéo apparaît en fondu une fois lancée ; le dégradé sert de placeholder. */
+.shot__video, .shot__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.shot__video { opacity: 0; transition: opacity .9s var(--ease); }
+.shot__video.is-playing { opacity: 1; }
+
 /* Compositions « œuvres » (placeholders prêts pour vraies photos) */
 .shot__media { background-color: var(--ink-soft); }
 .shot[data-art="1"] .shot__media { background:
@@ -476,6 +482,8 @@ ul, ol { list-style: none; }
 }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
 .field textarea { resize: vertical; }
+.form__actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .3rem; }
+.form__actions .form__submit { margin-top: 0; flex: 1 1 auto; }
 .form__submit { justify-content: center; margin-top: .3rem; }
 
 /* =========================================================================
