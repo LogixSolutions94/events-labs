@@ -73,14 +73,26 @@ events-labs/
 │   ├── css/styles.css      # design system complet
 │   ├── js/i18n.js          # traductions FR / AR / EN
 │   ├── js/main.js          # interactions + CONFIG coordonnées
-│   └── img/                # favicon, og-cover (+ vos photos)
+│   ├── img/                # favicon, og-cover, hero-poster (+ vos photos)
+│   └── video/hero.mp4      # vidéo de fond du hero
 └── README.md
 ```
 
+## Vidéo du hero
+
+Le fond du hero est une vidéo : `assets/video/hero.mp4` (table d'événement
+dressée). Source : **Mixkit** — [licence libre](https://mixkit.co/license/),
+usage commercial autorisé, **sans attribution**. Pour la remplacer, déposez
+votre propre `.mp4` (idéalement < 5 Mo, muet, ~10-20 s en boucle) à cet
+emplacement, ou changez le `src` dans `index.html` (`<video class="hero__video">`).
+L'image `assets/img/hero-poster.svg` s'affiche avant chargement / si
+l'utilisateur a activé « réduire les animations ».
+
 ## Direction artistique
 
-- **Palette** : noir-espresso `#16120d` · ivoire `#f4ebde` · **henné** `#b8502e`
-  (accent signature, ancré culturellement) · laiton mat `#bb9461`.
+- **Palette « Nuit & Champagne »** : bleu nuit `#0e1726` · ivoire `#f3efe7` ·
+  **or** `#b08a3a` (accent, lisible sur clair) · champagne `#c9a86a` (filets &
+  détails sur fond sombre).
 - **Typographie** : *Fraunces* (display), *Inter Tight* (corps), *Space Mono*
   (labels), *Aref Ruqaa* + *Tajawal* (arabe). Chargées via Google Fonts.
 - **Signatures** : grain argentique global, curseur custom « Voir », reveals
