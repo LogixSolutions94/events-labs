@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary SEO -->
-  <title>Events Labs — Atelier d'événements & scénographie · Kouba, Alger</title>
+  <title>Events Labs — L'art de mettre la fête en scène · Kouba, Alger</title>
   <meta name="description" content="Events Labs conçoit et installe la scénographie de vos mariages, fiançailles, henné, galas et événements d'entreprise à Alger. Atelier de décoration événementielle à Kouba. Devis rapide sur WhatsApp." />
   <meta name="keywords" content="décoration mariage Alger, location décoration mariage Kouba, agence événementielle Alger, scénographie mariage, décoration henné Alger, location chaises tables Alger, kosha trône mariés, organisation mariage Alger" />
   <meta name="author" content="Events Labs" />
-  <meta name="theme-color" content="#16120D" />
+  <meta name="theme-color" content="#0f0b08" />
   <link rel="canonical" href="https://eventslabs.dz/" />
 
   <!-- hreflang (à activer quand les URLs par langue existent) -->
@@ -20,7 +20,7 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="business.business" />
-  <meta property="og:title" content="Events Labs — L'atelier qui met vos émotions en scène" />
+  <meta property="og:title" content="Events Labs — L'art de mettre la fête en scène" />
   <meta property="og:description" content="Scénographie & décoration événementielle à Alger. Mariages, traditions, galas, corporate. Atelier basé à Kouba." />
   <meta property="og:locale" content="fr_DZ" />
   <meta property="og:locale:alternate" content="ar_DZ" />
@@ -32,10 +32,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
 
-  <!-- Fonts -->
+  <!-- Fonts : Bodoni Moda (display) · Hanken Grotesk (texte) · Fragment Mono (labels) · Amiri + Tajawal (arabe) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:ital,wght@0,300..700;1,400..600&family=Space+Mono:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=Fragment+Mono&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -73,40 +73,54 @@
   </script>
 </head>
 
-<body>
-  <!-- Grain argentique : signature « fait main » -->
+<body data-page="home">
+
+  <!-- Sprite d'icônes & ornements -->
+  <svg class="sr-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path d="M12 0c.9 6.9 4.9 10.9 12 12-7.1 1.1-11.1 5.1-12 12-.9-6.9-4.9-10.9-12-12C7.1 10.9 11.1 6.9 12 0Z"/>
+      </symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.43 1.32-1.96 1.37-.5.05-1.14.21-3.7-.79-3.12-1.23-5.1-4.42-5.26-4.63-.15-.21-1.25-1.66-1.25-3.17 0-1.51.79-2.25 1.07-2.56.28-.31.61-.39.81-.39.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.61.86 2.12.93 2.27.07.15.12.33.02.53-.1.21-.15.33-.3.51-.15.18-.32.4-.45.54-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.12 1.17 1.04 2.16 1.36 2.47 1.51.31.15.49.13.67-.08.18-.21.77-.9.98-1.21.21-.31.41-.26.69-.15.28.1 1.78.84 2.08.99.31.15.51.23.59.36.07.13.07.74-.18 1.43Z"/>
+      </symbol>
+      <symbol id="i-arr" viewBox="0 0 24 24">
+        <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Rideau d'ouverture -->
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <div class="curtain__panel curtain__panel--l"></div>
+    <div class="curtain__panel curtain__panel--r"></div>
+    <div class="curtain__center">
+      <svg class="curtain__star" aria-hidden="true"><use href="#i-star"/></svg>
+      <span class="curtain__brand">Events&nbsp;Labs</span>
+      <span class="curtain__word" data-i18n="introWord">présente</span>
+    </div>
+  </div>
+
+  <!-- Grain argentique -->
   <div class="grain" aria-hidden="true"></div>
 
   <!-- Curseur custom -->
-  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"><span class="cursor-ring__label"></span></div>
 
   <!-- Accessibilité -->
   <a href="#main" class="skip-link" data-i18n="skip">Aller au contenu</a>
 
-  <!-- Bandeau saisonnier -->
-  <div class="topbar" role="region" aria-label="Information">
-    <div class="wrap topbar__inner">
-      <p class="topbar__msg">
-        <span class="topbar__dot" aria-hidden="true"></span>
-        <span data-i18n="topbar">Saison hiver 2026 — dates encore disponibles · réservez tôt pour l'été.</span>
-      </p>
-      <div class="lang" role="group" aria-label="Langue / اللغة / Language">
-        <button class="lang__btn is-active" data-lang="fr" type="button">FR</button>
-        <span aria-hidden="true">·</span>
-        <button class="lang__btn" data-lang="ar" type="button">عربي</button>
-        <span aria-hidden="true">·</span>
-        <button class="lang__btn" data-lang="en" type="button">EN</button>
-      </div>
-    </div>
-  </div>
+  <!-- Fil de progression -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
 
   <!-- En-tête -->
   <header class="header" id="header">
-    <div class="wrap header__inner">
-      <a href="#" class="brand" aria-label="Events Labs — accueil">
+    <div class="header__inner">
+      <a href="index.html" class="brand" aria-label="Events Labs — accueil">
         <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M20 3 L34 11 V29 L20 37 L6 29 V11 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M14 14 H26 M14 20 H22 M14 26 H26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="18.6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M20 8c.75 5.75 4.08 9.08 10 10-5.92.92-9.25 4.25-10 10-.75-5.75-4.08-9.08-10-10 5.92-.92 9.25-4.25 10-10Z" fill="currentColor"/>
         </svg>
         <span class="brand__type">
           <span class="brand__name">Events&nbsp;Labs</span>
@@ -115,383 +129,471 @@
       </a>
 
       <nav class="nav" aria-label="Navigation principale">
-        <a href="#atelier" data-i18n="navAtelier">L'atelier</a>
-        <a href="#services" data-i18n="navServices">Savoir-faire</a>
-        <a href="#realisations" data-i18n="navReal">Réalisations</a>
-        <a href="#approche" data-i18n="navApproche">Approche</a>
-        <a href="#formules" data-i18n="navFormules">Formules</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="index.html" aria-current="page" data-i18n="navHome">Accueil</a>
+        <a href="realisations.html" data-i18n="navReal">Réalisations</a>
+        <a href="produits.html" data-i18n="navProducts">Produits & Formules</a>
+        <a href="contact.html" data-i18n="navDevis">Contact & Devis</a>
       </nav>
 
-      <a class="btn btn--wa header__cta" data-wa href="#contact">
-        <svg viewBox="0 0 24 24" class="ico-wa" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.43 1.32-1.96 1.37-.5.05-1.14.21-3.7-.79-3.12-1.23-5.1-4.42-5.26-4.63-.15-.21-1.25-1.66-1.25-3.17 0-1.51.79-2.25 1.07-2.56.28-.31.61-.39.81-.39.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.61.86 2.12.93 2.27.07.15.12.33.02.53-.1.21-.15.33-.3.51-.15.18-.32.4-.45.54-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.12 1.17 1.04 2.16 1.36 2.47 1.51.31.15.49.13.67-.08.18-.21.77-.9.98-1.21.21-.31.41-.26.69-.15.28.1 1.78.84 2.08.99.31.15.51.23.59.36.07.13.07.74-.18 1.43Z"/></svg>
-        <span data-i18n="ctaQuote">Devis WhatsApp</span>
-      </a>
-
-      <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
-        <span></span><span></span>
-      </button>
+      <div class="header__end">
+        <div class="lang" role="group" aria-label="Langue / اللغة / Language">
+          <button class="lang__btn is-active" data-lang="fr" type="button">FR</button>
+          <button class="lang__btn" data-lang="ar" type="button" lang="ar">عربي</button>
+          <button class="lang__btn" data-lang="en" type="button">EN</button>
+        </div>
+        <a class="btn btn--line header__cta" data-wa href="contact.html">
+          <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span data-i18n="ctaQuote">Devis WhatsApp</span>
+        </a>
+        <button class="burger" type="button" aria-label="Menu" data-i18n-aria="aBurger" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Menu mobile -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <nav aria-label="Navigation mobile">
-      <a href="#atelier" data-i18n="navAtelier">L'atelier</a>
-      <a href="#services" data-i18n="navServices">Savoir-faire</a>
-      <a href="#realisations" data-i18n="navReal">Réalisations</a>
-      <a href="#approche" data-i18n="navApproche">Approche</a>
-      <a href="#formules" data-i18n="navFormules">Formules</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
+  <div class="mnav" id="mobileNav" aria-hidden="true">
+    <nav class="mnav__links" aria-label="Navigation mobile">
+      <a href="index.html"><i>01</i><span data-i18n="navHome">Accueil</span></a>
+      <a href="realisations.html"><i>02</i><span data-i18n="navReal">Réalisations</span></a>
+      <a href="produits.html"><i>03</i><span data-i18n="navProducts">Produits & Formules</span></a>
+      <a href="contact.html"><i>04</i><span data-i18n="navDevis">Contact & Devis</span></a>
     </nav>
-    <a class="btn btn--wa" data-wa href="#contact"><span data-i18n="ctaQuote">Devis WhatsApp</span></a>
+    <div class="mnav__foot">
+      <a class="btn btn--gold" data-wa href="contact.html">
+        <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
+        <span data-i18n="ctaQuote">Devis WhatsApp</span>
+      </a>
+      <p class="mnav__loc" aria-hidden="true">Kouba · Alger — EST. 2018</p>
+    </div>
   </div>
+
+  <!-- Rail des actes (desktop) -->
+  <aside class="rail" aria-label="Progression">
+    <a href="#ouverture" class="rail__dot is-active" data-rail="ouverture"><i>00</i><span data-i18n="railHero">Ouverture</span></a>
+    <a href="#atelier" class="rail__dot" data-rail="atelier"><i>01</i><span data-i18n="navAtelier">L'atelier</span></a>
+    <a href="#services" class="rail__dot" data-rail="services"><i>02</i><span data-i18n="navServices">Savoir-faire</span></a>
+    <a href="#realisations" class="rail__dot" data-rail="realisations"><i>03</i><span data-i18n="navReal">Réalisations</span></a>
+    <a href="#approche" class="rail__dot" data-rail="approche"><i>04</i><span data-i18n="navApproche">Approche</span></a>
+    <a href="#formules" class="rail__dot" data-rail="formules"><i>05</i><span data-i18n="navFormules">Programme</span></a>
+    <a href="#rsvp" class="rail__dot" data-rail="rsvp"><i>06</i><span>R.S.V.P.</span></a>
+  </aside>
 
   <main id="main">
 
-    <!-- HERO -->
-    <section class="hero" id="top">
+    <!-- ═══════════════ OUVERTURE ═══════════════ -->
+    <section class="hero" id="ouverture">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.svg">
           <source src="assets/video/hero.mp4" type="video/mp4" />
         </video>
-        <div class="hero__overlay"></div>
-        <svg class="hero__arch" viewBox="0 0 600 700" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-          <path d="M60 700 V300 A240 240 0 0 1 540 300 V700" fill="none" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M110 700 V300 A190 190 0 0 1 490 300 V700" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-          <path d="M160 700 V310 A140 140 0 0 1 440 310 V700" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.4"/>
-        </svg>
+        <div class="hero__shade"></div>
+        <div class="hero__spot"></div>
+        <canvas class="sparks" aria-hidden="true"></canvas>
       </div>
 
-      <div class="wrap hero__inner">
-        <p class="eyebrow eyebrow--light reveal">
-          <span class="eyebrow__num">●</span>
-          <span data-i18n="heroEyebrow">Atelier de scénographie événementielle — depuis Kouba, Alger</span>
+      <div class="hero__inner">
+        <p class="hero__eyebrow rv">
+          <svg class="hero__eyebrow-star" aria-hidden="true"><use href="#i-star"/></svg>
+          <span data-i18n="heroEyebrow">Scénographie & décoration événementielle — Kouba, Alger</span>
         </p>
 
         <h1 class="hero__title">
-          <span class="reveal" data-i18n="heroLine1">Nous mettons</span>
-          <span class="reveal" data-i18n="heroLine2">vos émotions</span>
-          <span class="reveal hero__title-em"><em data-i18n="heroLine3">en scène.</em></span>
+          <span class="hline"><span class="hline__in" data-i18n="heroL1">L'art de mettre</span></span>
+          <span class="hline hline--em"><em class="hline__in" data-i18n="heroL2">la fête</em></span>
+          <span class="hline"><span class="hline__in" data-i18n="heroL3">en scène.</span></span>
         </h1>
 
         <div class="hero__foot">
-          <p class="hero__lede reveal" data-i18n="heroLede">
+          <p class="hero__lede rv" data-i18n="heroLede">
             Mariages, henné, fiançailles, galas, lancements. De la première idée à la dernière lumière éteinte, Events Labs conçoit, fabrique et installe des décors qui ne ressemblent qu'à vous.
           </p>
-          <div class="hero__actions reveal">
-            <a class="btn btn--solid" data-wa href="#contact"><span data-i18n="heroCta1">Demander un devis</span></a>
-            <a class="btn btn--ghost" href="#realisations" data-cursor="view"><span data-i18n="heroCta2">Voir nos réalisations</span></a>
+          <div class="hero__actions rv">
+            <a class="btn btn--gold" data-wa href="contact.html">
+              <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
+              <span data-i18n="heroCta1">Réserver ma date</span>
+            </a>
+            <a class="btn btn--ghost" href="realisations.html" data-cursor="view">
+              <span data-i18n="heroCta2">Voir les réalisations</span>
+              <svg class="btn__ico btn__ico--arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+            </a>
           </div>
+          <p class="hero__avail rv">
+            <span class="hero__avail-dot" aria-hidden="true"></span>
+            <span data-i18n="heroAvail">Saison 2026–2027 · dates encore disponibles</span>
+          </p>
         </div>
       </div>
 
-      <a href="#atelier" class="hero__scroll" aria-label="Défiler">
+      <div class="hero__corner hero__corner--r" aria-hidden="true">EST. 2018</div>
+
+      <a href="#atelier" class="hero__scroll">
         <span data-i18n="scroll">Défiler</span>
         <span class="hero__scroll-line" aria-hidden="true"></span>
       </a>
     </section>
 
-    <!-- TICKER bilingue -->
-    <div class="ticker" aria-hidden="true">
+    <!-- Ticker bilingue -->
+    <div class="ticker" aria-hidden="true" dir="ltr">
       <div class="ticker__track">
-        <span>Mariages</span><span class="ticker__sep">✦</span><span>الأعراس</span><span class="ticker__sep">✦</span>
-        <span>Henné</span><span class="ticker__sep">✦</span><span>الحنّة</span><span class="ticker__sep">✦</span>
-        <span>Fiançailles</span><span class="ticker__sep">✦</span><span>الخطوبة</span><span class="ticker__sep">✦</span>
-        <span>Galas</span><span class="ticker__sep">✦</span><span>الحفلات</span><span class="ticker__sep">✦</span>
-        <span>Corporate</span><span class="ticker__sep">✦</span><span>المؤسسات</span><span class="ticker__sep">✦</span>
-        <span>Scénographie</span><span class="ticker__sep">✦</span><span>السينوغرافيا</span><span class="ticker__sep">✦</span>
-        <!-- duplicate for seamless loop -->
-        <span>Mariages</span><span class="ticker__sep">✦</span><span>الأعراس</span><span class="ticker__sep">✦</span>
-        <span>Henné</span><span class="ticker__sep">✦</span><span>الحنّة</span><span class="ticker__sep">✦</span>
-        <span>Fiançailles</span><span class="ticker__sep">✦</span><span>الخطوبة</span><span class="ticker__sep">✦</span>
-        <span>Galas</span><span class="ticker__sep">✦</span><span>الحفلات</span><span class="ticker__sep">✦</span>
-        <span>Corporate</span><span class="ticker__sep">✦</span><span>المؤسسات</span><span class="ticker__sep">✦</span>
-        <span>Scénographie</span><span class="ticker__sep">✦</span><span>السينوغرافيا</span><span class="ticker__sep">✦</span>
+        <span>Mariages</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الأعراس</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Henné</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الحنّة</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Fiançailles</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الخطوبة</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Galas</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الحفلات</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Corporate</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">المؤسسات</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Scénographie</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">السينوغرافيا</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Mariages</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الأعراس</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Henné</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الحنّة</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Fiançailles</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الخطوبة</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Galas</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">الحفلات</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Corporate</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">المؤسسات</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Scénographie</span><svg class="tick-star"><use href="#i-star"/></svg><span lang="ar">السينوغرافيا</span><svg class="tick-star"><use href="#i-star"/></svg>
       </div>
     </div>
 
-    <!-- ATELIER / MANIFESTE -->
-    <section class="atelier section" id="atelier">
-      <div class="wrap atelier__grid">
-        <div class="atelier__label">
-          <p class="eyebrow reveal"><span class="eyebrow__num">01</span><span data-i18n="atelierKicker">L'atelier</span></p>
-        </div>
-        <div class="atelier__body">
-          <p class="lead reveal" data-i18n="atelierLead">
+    <!-- ═══════════════ ACTE I — L'ATELIER ═══════════════ -->
+    <section class="atelier section section--paper" id="atelier">
+      <div class="wrap">
+        <header class="act-head rv">
+          <span class="act-head__label" data-i18n="act1">Acte I</span>
+          <span class="act-head__rule" aria-hidden="true"></span>
+          <span class="act-head__name" data-i18n="navAtelier">L'atelier</span>
+        </header>
+
+        <div class="atelier__grid">
+          <p class="atelier__lead t-reveal" data-i18n="atLead">
             Events Labs n'est pas un simple loueur de décor. C'est un atelier : on imagine, on dessine et on orchestre chaque événement sur mesure.
           </p>
-          <p class="reveal" data-i18n="atelierP1">
-            À Alger, trop d'événements se ressemblent : les mêmes salles, les mêmes trônes, les mêmes fleurs artificielles. Nous prenons le contre-pied. Chaque projet commence par une page blanche, une conversation, une intention. Puis vient le dessin, la maquette, la fabrication en atelier, et l'installation millimétrée le jour J.
-          </p>
-          <p class="reveal" data-i18n="atelierP2">
-            Basés à Kouba, nous intervenons dans tout l'Algérois — dans votre salle des fêtes, votre jardin, votre terrasse ou le lieu le plus inattendu. Notre obsession : que vos invités retiennent une atmosphère, pas une décoration.
-          </p>
-          <div class="signature reveal">
-            <span class="signature__name">Events Labs</span>
-            <span class="signature__role" data-i18n="atelierSign">Direction artistique & production · Kouba, Alger</span>
+
+          <div class="atelier__cols">
+            <p class="rv" data-i18n="atP1">
+              À Alger, trop d'événements se ressemblent : les mêmes salles, les mêmes trônes, les mêmes fleurs artificielles. Nous prenons le contre-pied. Chaque projet commence par une page blanche, une conversation, une intention. Puis vient le dessin, la maquette, la fabrication en atelier, et l'installation millimétrée le jour J.
+            </p>
+            <p class="rv" data-i18n="atP2">
+              Basés à Kouba, nous intervenons dans tout l'Algérois — dans votre salle des fêtes, votre jardin, votre terrasse ou le lieu le plus inattendu.
+            </p>
+          </div>
+
+          <blockquote class="atelier__pull rv">
+            <svg class="atelier__pull-star" aria-hidden="true"><use href="#i-star"/></svg>
+            <p data-i18n="atQuote">Vos invités doivent retenir une atmosphère, pas une décoration.</p>
+            <svg class="orn draw atelier__branch" viewBox="0 0 120 160" aria-hidden="true">
+              <path d="M22 152 C 34 110, 44 78, 78 34 C 86 24, 94 16, 104 10" pathLength="1"/>
+              <path d="M38 108 C 26 96, 24 84, 30 72 C 42 78, 46 92, 38 108Z" pathLength="1"/>
+              <path d="M50 82 C 62 74, 74 74, 82 82 C 72 92, 58 92, 50 82Z" pathLength="1"/>
+              <path d="M62 58 C 52 48, 50 38, 56 28 C 66 34, 70 46, 62 58Z" pathLength="1"/>
+              <path d="M78 40 C 88 32, 98 32, 106 38 C 98 48, 86 48, 78 40Z" pathLength="1"/>
+              <circle cx="30" cy="130" r="4" pathLength="1"/>
+              <circle cx="98" cy="20" r="4" pathLength="1"/>
+            </svg>
+          </blockquote>
+
+          <div class="signature rv">
+            <span class="signature__name">Events&nbsp;Labs</span>
+            <span class="signature__role" data-i18n="atSignRole">Direction artistique & production · Kouba, Alger</span>
           </div>
         </div>
+
+        <span class="atelier__side" aria-hidden="true">Kouba · Alger — EST. 2018</span>
       </div>
     </section>
 
-    <!-- SERVICES / SAVOIR-FAIRE -->
-    <section class="services section" id="services">
+    <!-- ═══════════════ ACTE II — SAVOIR-FAIRE ═══════════════ -->
+    <section class="services section section--paper section--tight" id="services">
       <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow reveal"><span class="eyebrow__num">02</span><span data-i18n="servicesKicker">Savoir-faire</span></p>
-          <h2 class="section__title reveal" data-i18n="servicesTitle">Quatre terrains de jeu, une même exigence.</h2>
+        <header class="act-head rv">
+          <span class="act-head__label" data-i18n="act2">Acte II</span>
+          <span class="act-head__rule" aria-hidden="true"></span>
+          <span class="act-head__name" data-i18n="navServices">Savoir-faire</span>
         </header>
 
-        <div class="services__list">
-          <article class="srv reveal" data-cursor="view">
-            <div class="srv__index"><span>01</span></div>
-            <div class="srv__main">
-              <h3 class="srv__title" data-i18n="srv1Title">Mariages & traditions</h3>
-              <p class="srv__desc" data-i18n="srv1Desc">Henné, khotba, fiançailles, El Khouara, le grand jour. Nous habillons chaque rite avec justesse — kosha & trône des mariés, scène, allée, décor de voiture.</p>
-              <ul class="srv__tags">
-                <li data-i18n="srv1t1">Kosha & trône</li>
-                <li data-i18n="srv1t2">Décor de henné</li>
-                <li data-i18n="srv1t3">Scène & arches</li>
-                <li data-i18n="srv1t4">Déco voiture</li>
-              </ul>
+        <h2 class="section__title t-reveal" data-i18n="svTitle">Quatre terrains de jeu, une même exigence.</h2>
+
+        <div class="acc">
+          <article class="acc__item is-open rv">
+            <button class="acc__head" type="button" aria-expanded="true">
+              <span class="acc__num">01</span>
+              <span class="acc__title" data-i18n="sv1T">Mariages & traditions</span>
+              <span class="acc__icon" aria-hidden="true"></span>
+            </button>
+            <div class="acc__body">
+              <div class="acc__inner">
+                <p class="acc__desc" data-i18n="sv1D">Henné, khotba, fiançailles, El Khouara, le grand jour. Nous habillons chaque rite avec justesse — kosha & trône des mariés, scène, allée, décor de voiture.</p>
+                <ul class="acc__tags">
+                  <li data-i18n="sv1t1">Kosha & trône</li>
+                  <li data-i18n="sv1t2">Décor de henné</li>
+                  <li data-i18n="sv1t3">Scène & arches</li>
+                  <li data-i18n="sv1t4">Déco voiture</li>
+                </ul>
+              </div>
             </div>
           </article>
 
-          <article class="srv reveal" data-cursor="view">
-            <div class="srv__index"><span>02</span></div>
-            <div class="srv__main">
-              <h3 class="srv__title" data-i18n="srv2Title">Entreprises & lancements</h3>
-              <p class="srv__desc" data-i18n="srv2Desc">Séminaires, conférences, lancements produit, inaugurations. Une scénographie qui porte votre marque — stands, signalétique, lumière et son maîtrisés.</p>
-              <ul class="srv__tags">
-                <li data-i18n="srv2t1">Stands & scène</li>
-                <li data-i18n="srv2t2">Signalétique</li>
-                <li data-i18n="srv2t3">Lumière & son</li>
-                <li data-i18n="srv2t4">Branding espace</li>
-              </ul>
+          <article class="acc__item rv">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span class="acc__num">02</span>
+              <span class="acc__title" data-i18n="sv2T">Entreprises & lancements</span>
+              <span class="acc__icon" aria-hidden="true"></span>
+            </button>
+            <div class="acc__body">
+              <div class="acc__inner">
+                <p class="acc__desc" data-i18n="sv2D">Séminaires, conférences, lancements produit, inaugurations. Une scénographie qui porte votre marque — stands, signalétique, lumière et son maîtrisés.</p>
+                <ul class="acc__tags">
+                  <li data-i18n="sv2t1">Stands & scène</li>
+                  <li data-i18n="sv2t2">Signalétique</li>
+                  <li data-i18n="sv2t3">Lumière & son</li>
+                  <li data-i18n="sv2t4">Branding espace</li>
+                </ul>
+              </div>
             </div>
           </article>
 
-          <article class="srv reveal" data-cursor="view">
-            <div class="srv__index"><span>03</span></div>
-            <div class="srv__main">
-              <h3 class="srv__title" data-i18n="srv3Title">Galas & soirées de prestige</h3>
-              <p class="srv__desc" data-i18n="srv3Desc">Dîners de gala, remises de prix, soirées privées. Mise en lumière, art de la table, mise en scène d'entrée — l'élégance jusque dans le moindre détail.</p>
-              <ul class="srv__tags">
-                <li data-i18n="srv3t1">Art de la table</li>
-                <li data-i18n="srv3t2">Mise en lumière</li>
-                <li data-i18n="srv3t3">Scénographie d'entrée</li>
-                <li data-i18n="srv3t4">Mobilier d'exception</li>
-              </ul>
+          <article class="acc__item rv">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span class="acc__num">03</span>
+              <span class="acc__title" data-i18n="sv3T">Galas & soirées de prestige</span>
+              <span class="acc__icon" aria-hidden="true"></span>
+            </button>
+            <div class="acc__body">
+              <div class="acc__inner">
+                <p class="acc__desc" data-i18n="sv3D">Dîners de gala, remises de prix, soirées privées. Mise en lumière, art de la table, mise en scène d'entrée — l'élégance jusque dans le moindre détail.</p>
+                <ul class="acc__tags">
+                  <li data-i18n="sv3t1">Art de la table</li>
+                  <li data-i18n="sv3t2">Mise en lumière</li>
+                  <li data-i18n="sv3t3">Scénographie d'entrée</li>
+                  <li data-i18n="sv3t4">Mobilier d'exception</li>
+                </ul>
+              </div>
             </div>
           </article>
 
-          <article class="srv reveal" data-cursor="view">
-            <div class="srv__index"><span>04</span></div>
-            <div class="srv__main">
-              <h3 class="srv__title" data-i18n="srv4Title">Scénographie & location</h3>
-              <p class="srv__desc" data-i18n="srv4Desc">Le matériel et la main-d'œuvre, sans compromis. Chaises, tables, nappage, fleurs, chapiteaux, structures et installations sur mesure — montés et démontés par nos équipes.</p>
-              <ul class="srv__tags">
-                <li data-i18n="srv4t1">Chaises & tables</li>
-                <li data-i18n="srv4t2">Fleurs & nappage</li>
-                <li data-i18n="srv4t3">Chapiteaux</li>
-                <li data-i18n="srv4t4">Structures sur-mesure</li>
-              </ul>
+          <article class="acc__item rv">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span class="acc__num">04</span>
+              <span class="acc__title" data-i18n="sv4T">Scénographie & location</span>
+              <span class="acc__icon" aria-hidden="true"></span>
+            </button>
+            <div class="acc__body">
+              <div class="acc__inner">
+                <p class="acc__desc" data-i18n="sv4D">Le matériel et la main-d'œuvre, sans compromis. Chaises, tables, nappage, fleurs, chapiteaux, structures et installations sur mesure — montés et démontés par nos équipes.</p>
+                <ul class="acc__tags">
+                  <li data-i18n="sv4t1">Chaises & tables</li>
+                  <li data-i18n="sv4t2">Fleurs & nappage</li>
+                  <li data-i18n="sv4t3">Chapiteaux</li>
+                  <li data-i18n="sv4t4">Structures sur-mesure</li>
+                </ul>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- RÉALISATIONS -->
-    <section class="work section" id="realisations">
+    <!-- ═══════════════ ACTE III — RÉALISATIONS (aperçu) ═══════════════ -->
+    <section class="work section section--stage" id="realisations">
       <div class="wrap">
-        <header class="section__head section__head--row">
-          <div>
-            <p class="eyebrow reveal"><span class="eyebrow__num">03</span><span data-i18n="workKicker">Réalisations</span></p>
-            <h2 class="section__title reveal" data-i18n="workTitle">Des décors qui restent en mémoire.</h2>
+        <header class="act-head act-head--dark rv">
+          <span class="act-head__label" data-i18n="act3">Acte III</span>
+          <span class="act-head__rule" aria-hidden="true"></span>
+          <span class="act-head__name" data-i18n="navReal">Réalisations</span>
+        </header>
+
+        <div class="work__intro">
+          <h2 class="section__title t-reveal" data-i18n="wkTitle">Des décors qui restent en mémoire.</h2>
+          <p class="work__drag rv" aria-hidden="true">
+            <svg class="work__drag-arr work__drag-arr--l"><use href="#i-arr"/></svg>
+            <span data-i18n="wkDrag">Glisser pour explorer</span>
+            <svg class="work__drag-arr"><use href="#i-arr"/></svg>
+          </p>
+        </div>
+      </div>
+
+      <div class="strip" id="strip" data-shots>
+        <figure class="shot rv" data-cat="mariage" data-cursor="view">
+          <span class="shot__idx" aria-hidden="true">01</span>
+          <div class="shot__media">
+            <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work1.mp4"></video>
           </div>
-          <p class="section__note reveal" data-i18n="workNote">Un aperçu de notre univers. Les visuels ci-dessous sont des compositions de présentation, prêtes à accueillir les photographies de vos événements.</p>
-        </header>
+          <figcaption class="shot__cap">
+            <span class="shot__cat" data-i18n="capMariage">Mariage</span>
+            <span class="shot__name" data-i18n="proj1">Kosha « Nuit d'ambre »</span>
+          </figcaption>
+        </figure>
 
-        <div class="filters reveal" role="tablist" aria-label="Filtrer les réalisations">
-          <button class="filter is-active" data-filter="all" type="button" data-i18n="fAll">Tout</button>
-          <button class="filter" data-filter="mariage" type="button" data-i18n="fWedding">Mariages</button>
-          <button class="filter" data-filter="tradition" type="button" data-i18n="fTradition">Traditions</button>
-          <button class="filter" data-filter="corporate" type="button" data-i18n="fCorporate">Corporate</button>
-          <button class="filter" data-filter="gala" type="button" data-i18n="fGala">Galas</button>
-        </div>
+        <figure class="shot rv" data-cat="tradition" data-cursor="view">
+          <span class="shot__idx" aria-hidden="true">02</span>
+          <div class="shot__media">
+            <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work2.mp4"></video>
+          </div>
+          <figcaption class="shot__cap">
+            <span class="shot__cat" data-i18n="capTradition">Henné</span>
+            <span class="shot__name" data-i18n="proj2">Soirée henné « Safran »</span>
+          </figcaption>
+        </figure>
 
-        <div class="gallery">
-          <!-- chaque .shot est un emplacement prêt à recevoir une vraie photo (voir README) -->
-          <figure class="shot shot--tall reveal" data-cat="mariage" data-cursor="view" data-art="1">
-            <div class="shot__media">
-              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work1.mp4"></video>
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capMariage">Mariage</span>
-              <span class="shot__name" data-i18n="proj1">Kosha « Nuit d'ambre »</span>
-            </figcaption>
-          </figure>
+        <figure class="shot rv" data-cat="gala" data-cursor="view">
+          <span class="shot__idx" aria-hidden="true">03</span>
+          <div class="shot__media">
+            <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work3.mp4"></video>
+          </div>
+          <figcaption class="shot__cap">
+            <span class="shot__cat" data-i18n="capGala">Gala</span>
+            <span class="shot__name" data-i18n="proj3">Dîner de gala « Laiton »</span>
+          </figcaption>
+        </figure>
 
-          <figure class="shot reveal" data-cat="tradition" data-cursor="view" data-art="2">
-            <div class="shot__media">
-              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work2.mp4"></video>
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capTradition">Henné</span>
-              <span class="shot__name" data-i18n="proj2">Soirée henné « Safran »</span>
-            </figcaption>
-          </figure>
+        <figure class="shot rv" data-cat="corporate" data-cursor="view">
+          <span class="shot__idx" aria-hidden="true">04</span>
+          <div class="shot__media">
+            <img src="assets/img/realisations/corp.jpg" alt="Lancement événementiel — scène et lumières" loading="lazy" />
+          </div>
+          <figcaption class="shot__cap">
+            <span class="shot__cat" data-i18n="capCorporate">Corporate</span>
+            <span class="shot__name" data-i18n="proj4">Lancement « Studio 21 »</span>
+          </figcaption>
+        </figure>
 
-          <figure class="shot reveal" data-cat="gala" data-cursor="view" data-art="3">
-            <div class="shot__media">
-              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work3.mp4"></video>
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capGala">Gala</span>
-              <span class="shot__name" data-i18n="proj3">Dîner de gala « Laiton »</span>
-            </figcaption>
-          </figure>
-
-          <figure class="shot shot--wide reveal" data-cat="corporate" data-cursor="view" data-art="4">
-            <div class="shot__media">
-              <img src="assets/img/realisations/corp.jpg" alt="Lancement événementiel — lieu & lumières" loading="lazy" />
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capCorporate">Corporate</span>
-              <span class="shot__name" data-i18n="proj4">Lancement « Studio 21 »</span>
-            </figcaption>
-          </figure>
-
-          <figure class="shot reveal" data-cat="mariage" data-cursor="view" data-art="5">
-            <div class="shot__media">
-              <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work5.mp4"></video>
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capMariage">Mariage</span>
-              <span class="shot__name" data-i18n="proj5">Allée & arche florale</span>
-            </figcaption>
-          </figure>
-
-          <figure class="shot shot--tall reveal" data-cat="gala" data-cursor="view" data-art="6">
-            <div class="shot__media">
-              <img src="assets/img/realisations/gala.jpg" alt="Coupes de champagne — soirée de gala" loading="lazy" />
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capGala">Soirée</span>
-              <span class="shot__name" data-i18n="proj6">Mise en lumière « Velours »</span>
-            </figcaption>
-          </figure>
-
-          <figure class="shot reveal" data-cat="mariage" data-cursor="view">
-            <div class="shot__media">
-              <img src="assets/img/realisations/wed.jpg" alt="Centre de table fleuri" loading="lazy" />
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capMariage">Mariage</span>
-              <span class="shot__name" data-i18n="proj7">Table d'honneur « Roseraie »</span>
-            </figcaption>
-          </figure>
-
-          <figure class="shot reveal" data-cat="tradition" data-cursor="view">
-            <div class="shot__media">
-              <img src="assets/img/realisations/fianc.jpg" alt="Alliances — fiançailles" loading="lazy" />
-            </div>
-            <figcaption class="shot__cap">
-              <span class="shot__cat" data-i18n="capFiancailles">Fiançailles</span>
-              <span class="shot__name" data-i18n="proj8">Fiançailles « Éclat »</span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <p class="work__cta reveal">
-          <a class="link-underline" data-wa href="#contact" data-i18n="workCtaLink">Discuter de votre projet sur WhatsApp →</a>
-        </p>
+        <figure class="shot rv" data-cat="mariage" data-cursor="view">
+          <span class="shot__idx" aria-hidden="true">05</span>
+          <div class="shot__media">
+            <img src="assets/img/realisations/wed.jpg" alt="Centre de table fleuri — mariage" loading="lazy" />
+          </div>
+          <figcaption class="shot__cap">
+            <span class="shot__cat" data-i18n="capMariage">Mariage</span>
+            <span class="shot__name" data-i18n="proj7">Table d'honneur « Roseraie »</span>
+          </figcaption>
+        </figure>
       </div>
+
+      <div class="wrap strip-ui rv">
+        <div class="strip-ui__progress" aria-hidden="true"><span class="strip-ui__bar" id="stripBar"></span></div>
+        <div class="strip-ui__btns">
+          <button class="strip-ui__btn" id="stripPrev" type="button" aria-label="Précédent" data-i18n-aria="aPrev">
+            <svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg>
+          </button>
+          <button class="strip-ui__btn" id="stripNext" type="button" aria-label="Suivant" data-i18n-aria="aNext">
+            <svg class="flip-rtl"><use href="#i-arr"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <p class="wrap work__cta rv">
+        <a class="link-arrow" href="realisations.html">
+          <span data-i18n="wkMore">Entrer dans la galerie complète</span>
+          <svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+        </a>
+      </p>
     </section>
 
-    <!-- APPROCHE / PROCESS -->
-    <section class="approche section" id="approche">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow reveal"><span class="eyebrow__num">04</span><span data-i18n="appKicker">L'approche</span></p>
-          <h2 class="section__title reveal" data-i18n="appTitle">Une méthode claire, du sur-mesure, zéro hasard.</h2>
-        </header>
+    <!-- ═══════════════ ACTE IV — L'APPROCHE ═══════════════ -->
+    <section class="approche section section--paper" id="approche">
+      <div class="wrap approche__grid">
+        <div class="approche__intro">
+          <header class="act-head rv">
+            <span class="act-head__label" data-i18n="act4">Acte IV</span>
+            <span class="act-head__rule" aria-hidden="true"></span>
+            <span class="act-head__name" data-i18n="navApproche">L'approche</span>
+          </header>
+          <h2 class="section__title t-reveal" data-i18n="apTitle">Une méthode claire, du sur-mesure, zéro hasard.</h2>
+          <p class="approche__note rv" data-i18n="apNote">De la première rencontre au démontage, un seul interlocuteur.</p>
+          <svg class="orn draw approche__rings" viewBox="0 0 140 96" aria-hidden="true">
+            <circle cx="53" cy="54" r="30" pathLength="1"/>
+            <circle cx="87" cy="54" r="30" pathLength="1"/>
+            <path d="M70 4c.7 5.4 3.7 8.4 9 9-5.3.9-8.3 3.9-9 9-.7-5.1-3.7-8.1-9-9 5.3-.6 8.3-3.6 9-9Z" pathLength="1"/>
+          </svg>
+        </div>
 
         <ol class="steps">
-          <li class="step reveal">
-            <span class="step__num">01</span>
-            <h3 class="step__title" data-i18n="step1Title">Écoute & concept</h3>
-            <p class="step__desc" data-i18n="step1Desc">On comprend votre histoire, votre budget, votre lieu. On repart avec une direction artistique claire et une planche d'ambiance.</p>
+          <li class="step rv">
+            <span class="step__num" aria-hidden="true">01</span>
+            <div class="step__body">
+              <h3 class="step__title" data-i18n="st1T">Écoute & concept</h3>
+              <p class="step__desc" data-i18n="st1D">On comprend votre histoire, votre budget, votre lieu. On repart avec une direction artistique claire et une planche d'ambiance.</p>
+            </div>
           </li>
-          <li class="step reveal">
-            <span class="step__num">02</span>
-            <h3 class="step__title" data-i18n="step2Title">Dessin & devis</h3>
-            <p class="step__desc" data-i18n="step2Desc">Plans, croquis et devis détaillé, ligne par ligne. Vous savez exactement ce que vous réservez — pas de surprise.</p>
+          <li class="step rv">
+            <span class="step__num" aria-hidden="true">02</span>
+            <div class="step__body">
+              <h3 class="step__title" data-i18n="st2T">Dessin & devis</h3>
+              <p class="step__desc" data-i18n="st2D">Plans, croquis et devis détaillé, ligne par ligne. Vous savez exactement ce que vous réservez — pas de surprise.</p>
+            </div>
           </li>
-          <li class="step reveal">
-            <span class="step__num">03</span>
-            <h3 class="step__title" data-i18n="step3Title">Fabrication & production</h3>
-            <p class="step__desc" data-i18n="step3Desc">On fabrique en atelier, on source le mobilier, les fleurs, la lumière et le son. Tout est testé avant le jour J.</p>
+          <li class="step rv">
+            <span class="step__num" aria-hidden="true">03</span>
+            <div class="step__body">
+              <h3 class="step__title" data-i18n="st3T">Fabrication & production</h3>
+              <p class="step__desc" data-i18n="st3D">On fabrique en atelier, on source le mobilier, les fleurs, la lumière et le son. Tout est testé avant le jour J.</p>
+            </div>
           </li>
-          <li class="step reveal">
-            <span class="step__num">04</span>
-            <h3 class="step__title" data-i18n="step4Title">Installation & le jour J</h3>
-            <p class="step__desc" data-i18n="step4Desc">Nos équipes montent, règlent et veillent sur place. Vous profitez ; nous gérons jusqu'au démontage.</p>
+          <li class="step rv">
+            <span class="step__num" aria-hidden="true">04</span>
+            <div class="step__body">
+              <h3 class="step__title" data-i18n="st4T">Installation & le jour J</h3>
+              <p class="step__desc" data-i18n="st4D">Nos équipes montent, règlent et veillent sur place. Vous profitez ; nous gérons jusqu'au démontage.</p>
+            </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- CHIFFRES -->
-    <section class="stats section">
+    <!-- Chiffres — entracte velours -->
+    <section class="stats" aria-label="Chiffres clés">
       <div class="wrap stats__grid">
-        <div class="stat reveal">
-          <span class="stat__num" data-count="8" data-i18n-attr="data-suffix" data-suffix="+">8</span>
+        <div class="stat rv">
+          <span class="stat__num"><span data-count="8">8</span><i>+</i></span>
           <span class="stat__label" data-i18n="stat1">ans d'expérience</span>
         </div>
-        <div class="stat reveal">
-          <span class="stat__num" data-count="450" data-suffix="+">450</span>
+        <div class="stat rv">
+          <span class="stat__num"><span data-count="450">450</span><i>+</i></span>
           <span class="stat__label" data-i18n="stat2">événements signés</span>
         </div>
-        <div class="stat reveal">
-          <span class="stat__num" data-count="40" data-suffix="+">40</span>
+        <div class="stat rv">
+          <span class="stat__num"><span data-count="40">40</span><i>+</i></span>
           <span class="stat__label" data-i18n="stat3">salles partenaires à Alger</span>
         </div>
-        <div class="stat reveal">
-          <span class="stat__num" data-count="100" data-suffix="%">100</span>
+        <div class="stat rv">
+          <span class="stat__num"><span data-count="100">100</span><i>%</i></span>
           <span class="stat__label" data-i18n="stat4">sur-mesure, jamais de copier-coller</span>
         </div>
       </div>
     </section>
 
-    <!-- FORMULES -->
-    <section class="pricing section" id="formules">
+    <!-- ═══════════════ ACTE V — LE PROGRAMME (aperçu) ═══════════════ -->
+    <section class="pricing section section--paper" id="formules">
       <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow reveal"><span class="eyebrow__num">05</span><span data-i18n="priceKicker">Formules</span></p>
-          <h2 class="section__title reveal" data-i18n="priceTitle">Des repères clairs. Le devis, lui, est toujours sur-mesure.</h2>
-          <p class="section__note reveal" data-i18n="priceNote">Contrairement à l'usage du marché, on vous donne des fourchettes « à partir de » pour vous situer. Le prix final dépend du lieu, du nombre d'invités et de vos envies.</p>
+        <header class="act-head rv">
+          <span class="act-head__label" data-i18n="act5">Acte V</span>
+          <span class="act-head__rule" aria-hidden="true"></span>
+          <span class="act-head__name" data-i18n="navFormules">Programme</span>
         </header>
 
+        <div class="pricing__intro">
+          <h2 class="section__title t-reveal" data-i18n="prTitle">Des repères clairs. Le devis, toujours sur-mesure.</h2>
+          <p class="pricing__note rv" data-i18n="prNote">Contrairement à l'usage du marché, on vous donne des fourchettes « à partir de » pour vous situer. Le prix final dépend du lieu, du nombre d'invités et de vos envies.</p>
+        </div>
+
         <div class="plans">
-          <article class="plan reveal">
-            <h3 class="plan__name" data-i18n="plan1Name">Henné & Fiançailles</h3>
-            <p class="plan__from"><strong>45 000 – 80 000 DA</strong></p>
+          <article class="plan rv">
+            <div class="plan__top">
+              <h3 class="plan__name" data-i18n="plan1Name">Henné & Fiançailles</h3>
+              <p class="plan__price" dir="ltr">45 – 80 <i>k DA</i></p>
+            </div>
             <ul class="plan__feats">
               <li data-i18n="plan1f1">Décor de scène & assise d'honneur</li>
               <li data-i18n="plan1f2">Habillage table & accessoires traditionnels</li>
               <li data-i18n="plan1f3">Fleurs & bougies d'ambiance</li>
               <li data-i18n="plan1f4">Installation & démontage inclus</li>
             </ul>
-            <a class="btn btn--ghost plan__btn" data-wa href="#contact" data-i18n="planCta">Demander ce devis</a>
+            <a class="plan__cta" data-wa href="contact.html"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
           </article>
 
-          <article class="plan plan--feature reveal">
-            <span class="plan__badge" data-i18n="planPop">Le plus demandé</span>
-            <h3 class="plan__name" data-i18n="plan2Name">Mariage Essentiel</h3>
-            <p class="plan__from"><strong>120 000 – 220 000 DA</strong></p>
+          <article class="plan plan--feature rv">
+            <span class="plan__badge"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-i18n="planPop">Le plus demandé</span></span>
+            <div class="plan__top">
+              <h3 class="plan__name" data-i18n="plan2Name">Mariage Essentiel</h3>
+              <p class="plan__price" dir="ltr">120 – 220 <i>k DA</i></p>
+            </div>
             <ul class="plan__feats">
               <li data-i18n="plan2f1">Kosha / trône des mariés sur-mesure</li>
               <li data-i18n="plan2f2">Scène, allée & arche florale</li>
@@ -499,12 +601,14 @@
               <li data-i18n="plan2f4">Mise en lumière d'ambiance</li>
               <li data-i18n="plan2f5">Coordination & équipe le jour J</li>
             </ul>
-            <a class="btn btn--solid plan__btn" data-wa href="#contact" data-i18n="planCta">Demander ce devis</a>
+            <a class="plan__cta" data-wa href="contact.html"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
           </article>
 
-          <article class="plan reveal">
-            <h3 class="plan__name" data-i18n="plan3Name">Mariage Prestige</h3>
-            <p class="plan__from"><strong>300 000 – 600 000 DA</strong></p>
+          <article class="plan rv">
+            <div class="plan__top">
+              <h3 class="plan__name" data-i18n="plan3Name">Mariage Prestige</h3>
+              <p class="plan__price" dir="ltr">300 – 600 <i>k DA</i></p>
+            </div>
             <ul class="plan__feats">
               <li data-i18n="plan3f1">Scénographie complète & sur-mesure</li>
               <li data-i18n="plan3f2">Fleurs naturelles & matières nobles</li>
@@ -512,158 +616,106 @@
               <li data-i18n="plan3f4">Mobilier d'exception & lounge</li>
               <li data-i18n="plan3f5">Chef de projet dédié</li>
             </ul>
-            <a class="btn btn--ghost plan__btn" data-wa href="#contact" data-i18n="planCta">Demander ce devis</a>
-          </article>
-
-          <article class="plan reveal">
-            <h3 class="plan__name" data-i18n="plan5Name">Anniversaire & Privé</h3>
-            <p class="plan__from"><strong>35 000 – 90 000 DA</strong></p>
-            <ul class="plan__feats">
-              <li data-i18n="plan5f1">Décor thématique sur-mesure</li>
-              <li data-i18n="plan5f2">Ballons, fleurs & sweet table</li>
-              <li data-i18n="plan5f3">Mise en lumière & mobilier</li>
-              <li data-i18n="plan5f4">Installation & démontage inclus</li>
-            </ul>
-            <a class="btn btn--ghost plan__btn" data-wa href="#contact" data-i18n="planCta">Demander ce devis</a>
-          </article>
-
-          <article class="plan reveal">
-            <h3 class="plan__name" data-i18n="plan6Name">Location & Matériel</h3>
-            <p class="plan__from"><span data-i18n="from">à partir de</span> <strong>25 000 DA</strong></p>
-            <ul class="plan__feats">
-              <li data-i18n="plan6f1">Chaises, tables & nappage</li>
-              <li data-i18n="plan6f2">Trône, mobilier & lounge</li>
-              <li data-i18n="plan6f3">Chapiteaux & structures</li>
-              <li data-i18n="plan6f4">Livraison, montage & reprise</li>
-            </ul>
-            <a class="btn btn--ghost plan__btn" data-wa href="#contact" data-i18n="planCta">Demander ce devis</a>
-          </article>
-
-          <article class="plan plan--custom reveal">
-            <h3 class="plan__name" data-i18n="plan4Name">Corporate & Sur-mesure</h3>
-            <p class="plan__from" data-i18n="plan4From">sur étude</p>
-            <ul class="plan__feats">
-              <li data-i18n="plan4f1">Séminaires, galas, lancements</li>
-              <li data-i18n="plan4f2">Conception scénographique dédiée</li>
-              <li data-i18n="plan4f3">Branding d'espace & signalétique</li>
-              <li data-i18n="plan4f4">Régie technique son & lumière</li>
-            </ul>
-            <a class="btn btn--ghost plan__btn" data-wa href="#contact" data-i18n="planCtaCustom">Parlons-en</a>
+            <a class="plan__cta" data-wa href="contact.html"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
           </article>
         </div>
 
-        <p class="pricing__legal reveal" data-i18n="priceLegal">Prix indicatifs en dinars algériens, hors location de salle. Réservation confirmée par acompte et contrat détaillé.</p>
+        <p class="pricing__more rv">
+          <a class="link-arrow link-arrow--ink" href="produits.html">
+            <span data-i18n="prMore">Découvrir tout le programme & la location</span>
+            <svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
+        </p>
       </div>
     </section>
 
-    <!-- TÉMOIGNAGES -->
-    <section class="quotes section">
+    <!-- ═══════════════ ACTE VI — TÉMOIGNAGES ═══════════════ -->
+    <section class="quotes section section--velvet">
       <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow reveal"><span class="eyebrow__num">06</span><span data-i18n="testiKicker">Ils nous ont fait confiance</span></p>
+        <header class="act-head act-head--dark rv">
+          <span class="act-head__label" data-i18n="act6">Acte VI</span>
+          <span class="act-head__rule" aria-hidden="true"></span>
+          <span class="act-head__name" data-i18n="qKicker">Ils nous ont fait confiance</span>
         </header>
-        <div class="quotes__grid">
-          <blockquote class="quote reveal">
-            <p data-i18n="testi1">« On nous avait promis un décor "comme sur les photos". Pour une fois, c'était mieux. La salle était méconnaissable, nos invités en parlent encore. »</p>
-            <footer><span class="quote__name" data-i18n="testi1Name">Amel & Yacine</span><span class="quote__meta" data-i18n="testi1Meta">Mariage · Hydra, Alger</span></footer>
-          </blockquote>
-          <blockquote class="quote reveal">
-            <p data-i18n="testi2">« Réactifs sur WhatsApp, un devis clair, et zéro stress le jour J. Une équipe de vrais pros. »</p>
-            <footer><span class="quote__name" data-i18n="testi2Name">Lydia B.</span><span class="quote__meta" data-i18n="testi2Meta">Fiançailles · Kouba</span></footer>
-          </blockquote>
-          <blockquote class="quote reveal">
-            <p data-i18n="testi3">« Pour le lancement de notre boutique, ils ont transformé un local brut en un lieu qui faisait rêver. Très professionnel. »</p>
-            <footer><span class="quote__name" data-i18n="testi3Name">Studio 21</span><span class="quote__meta" data-i18n="testi3Meta">Corporate · Alger-Centre</span></footer>
-          </blockquote>
+
+        <div class="qcar rv" id="qcar">
+          <span class="qcar__mark" aria-hidden="true">«</span>
+          <div class="qcar__slides">
+            <blockquote class="qcar__slide is-active">
+              <p class="qcar__text" data-i18n="q1">On nous avait promis un décor « comme sur les photos ». Pour une fois, c'était mieux. La salle était méconnaissable, nos invités en parlent encore.</p>
+              <footer><span class="qcar__name" data-i18n="q1N">Amel & Yacine</span><span class="qcar__meta" data-i18n="q1M">Mariage · Hydra, Alger</span></footer>
+            </blockquote>
+            <blockquote class="qcar__slide">
+              <p class="qcar__text" data-i18n="q2">Réactifs sur WhatsApp, un devis clair, et zéro stress le jour J. Une équipe de vrais pros.</p>
+              <footer><span class="qcar__name" data-i18n="q2N">Lydia B.</span><span class="qcar__meta" data-i18n="q2M">Fiançailles · Kouba</span></footer>
+            </blockquote>
+            <blockquote class="qcar__slide">
+              <p class="qcar__text" data-i18n="q3">Pour le lancement de notre boutique, ils ont transformé un local brut en un lieu qui faisait rêver. Très professionnel.</p>
+              <footer><span class="qcar__name" data-i18n="q3N">Studio 21</span><span class="qcar__meta" data-i18n="q3M">Corporate · Alger-Centre</span></footer>
+            </blockquote>
+          </div>
+          <div class="qcar__ui">
+            <button class="qcar__btn" id="qPrev" type="button" aria-label="Témoignage précédent" data-i18n-aria="aPrev"><svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg></button>
+            <span class="qcar__count" id="qCount" dir="ltr">1 / 3</span>
+            <button class="qcar__btn" id="qNext" type="button" aria-label="Témoignage suivant" data-i18n-aria="aNext"><svg class="flip-rtl"><use href="#i-arr"/></svg></button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="contact section" id="contact">
-      <div class="wrap contact__grid">
-        <div class="contact__intro">
-          <p class="eyebrow reveal"><span class="eyebrow__num">07</span><span data-i18n="contactKicker">Parlons de votre événement</span></p>
-          <h2 class="contact__title reveal" data-i18n="contactTitle">Racontez-nous votre projet. On s'occupe du reste.</h2>
-          <p class="contact__text reveal" data-i18n="contactText">Le plus simple : un message WhatsApp. On vous répond vite, on cale un rendez-vous à l'atelier de Kouba ou en visio, et on dessine votre devis.</p>
-
-          <div class="contact__actions reveal">
-            <a class="btn btn--solid" data-wa href="#"><span data-i18n="ctaWa">Écrire sur WhatsApp</span></a>
-            <a class="btn btn--ghost" data-mail href="#"><span data-i18n="ctaEmail">Envoyer un e-mail</span></a>
-            <a class="btn btn--ghost" data-call href="#"><span data-i18n="ctaCall">Appeler l'atelier</span></a>
-          </div>
-
-          <ul class="contact__details reveal">
-            <li>
-              <span class="contact__lbl" data-i18n="cAddr">Atelier</span>
-              <span class="contact__val" data-i18n="cAddrVal">Kouba, Alger — adresse à préciser</span>
-            </li>
-            <li>
-              <span class="contact__lbl" data-i18n="cPhone">Téléphone / WhatsApp</span>
-              <span class="contact__val" data-phone-display>+213 0 00 00 00 00</span>
-            </li>
-            <li>
-              <span class="contact__lbl" data-i18n="cMail">E-mail</span>
-              <span class="contact__val" data-mail-display>contact@eventslabs.dz</span>
-            </li>
-            <li>
-              <span class="contact__lbl" data-i18n="cHours">Horaires</span>
-              <span class="contact__val" data-i18n="cHoursVal">Samedi – jeudi · 9h – 19h</span>
-            </li>
-          </ul>
+    <!-- ═══════════════ R.S.V.P. — bandeau final ═══════════════ -->
+    <section class="banner section section--stage" id="rsvp">
+      <canvas class="sparks" aria-hidden="true"></canvas>
+      <div class="wrap banner__inner">
+        <svg class="orn draw banner__lantern" viewBox="0 0 120 156" aria-hidden="true">
+          <circle cx="60" cy="10" r="6" pathLength="1"/>
+          <path d="M60 16 v10" pathLength="1"/>
+          <path d="M46 36 Q60 26 74 36 L80 46 H40 Z" pathLength="1"/>
+          <path d="M40 46 C 28 68 28 98 40 118 L80 118 C 92 98 92 68 80 46" pathLength="1"/>
+          <path d="M52 46 v72 M68 46 v72" pathLength="1"/>
+          <path d="M46 118 l-5 10 h38 l-5 -10" pathLength="1"/>
+          <path d="M60 128 v14" pathLength="1"/>
+          <circle cx="60" cy="147" r="4" pathLength="1"/>
+          <path d="M60 74 C 56 80 56 86 60 89 C 64 86 64 80 60 74Z" pathLength="1"/>
+          <path d="M98 64c.5 4 2.6 6.1 6.5 6.6-3.9.6-6 2.7-6.5 6.6-.5-3.9-2.6-6-6.5-6.6 3.9-.5 6-2.6 6.5-6.6Z" pathLength="1"/>
+        </svg>
+        <h2 class="banner__title t-reveal" data-i18n="bannerTitle">Une date en tête&nbsp;?</h2>
+        <p class="banner__text rv" data-i18n="bannerText">Racontez-nous votre projet — on vous répond dans la journée.</p>
+        <div class="banner__actions rv">
+          <a class="btn btn--gold" data-wa href="contact.html">
+            <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
+            <span data-i18n="bannerCta">Demander un devis</span>
+          </a>
+          <a class="btn btn--ghost" href="contact.html">
+            <span data-i18n="bannerAlt">Détailler mon projet</span>
+            <svg class="btn__ico btn__ico--arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
         </div>
-
-        <form class="contact__form reveal" id="quoteForm" novalidate>
-          <p class="form__hint" data-i18n="formHint">Ou laissez-nous quelques infos — le formulaire prépare votre message WhatsApp.</p>
-          <div class="field">
-            <label for="f-name" data-i18n="fName">Votre nom</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required />
-          </div>
-          <div class="field field--row">
-            <div>
-              <label for="f-type" data-i18n="fType">Type d'événement</label>
-              <select id="f-type" name="type">
-                <option data-i18n="optWedding">Mariage</option>
-                <option data-i18n="optHenna">Henné / Fiançailles</option>
-                <option data-i18n="optGala">Gala / Soirée</option>
-                <option data-i18n="optCorp">Entreprise / Lancement</option>
-                <option data-i18n="optOther">Autre</option>
-              </select>
-            </div>
-            <div>
-              <label for="f-date" data-i18n="fDate">Date (approx.)</label>
-              <input id="f-date" name="date" type="text" placeholder="ex. août 2026" />
-            </div>
-          </div>
-          <div class="field">
-            <label for="f-msg" data-i18n="fMsg">Votre projet en quelques mots</label>
-            <textarea id="f-msg" name="msg" rows="3"></textarea>
-          </div>
-          <div class="form__actions">
-          <button class="btn btn--solid form__submit" type="submit">
-            <svg viewBox="0 0 24 24" class="ico-wa" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.43 1.32-1.96 1.37-.5.05-1.14.21-3.7-.79-3.12-1.23-5.1-4.42-5.26-4.63-.15-.21-1.25-1.66-1.25-3.17 0-1.51.79-2.25 1.07-2.56.28-.31.61-.39.81-.39.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.61.86 2.12.93 2.27.07.15.12.33.02.53-.1.21-.15.33-.3.51-.15.18-.32.4-.45.54-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.12 1.17 1.04 2.16 1.36 2.47 1.51.31.15.49.13.67-.08.18-.21.77-.9.98-1.21.21-.31.41-.26.69-.15.28.1 1.78.84 2.08.99.31.15.51.23.59.36.07.13.07.74-.18 1.43Z"/></svg>
-            <span data-i18n="formSubmit">Envoyer sur WhatsApp</span>
-          </button>
-          <button class="btn btn--ghost form__submit" type="button" id="quoteMail"><span data-i18n="formSubmitMail">Ou par e-mail</span></button>
-          </div>
-        </form>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- PIED DE PAGE -->
   <footer class="footer">
+    <div class="footer__marquee" aria-hidden="true" dir="ltr">
+      <div class="footer__marquee-track">
+        <span>Events Labs</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span lang="ar">إيفنتس لابز</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span>Events Labs</span><svg class="tick-star"><use href="#i-star"/></svg>
+        <span lang="ar">إيفنتس لابز</span><svg class="tick-star"><use href="#i-star"/></svg>
+      </div>
+    </div>
+
     <div class="wrap footer__inner">
       <div class="footer__brand">
-        <span class="brand__name footer__name">Events&nbsp;Labs</span>
+        <span class="footer__name">Events&nbsp;Labs</span>
         <p class="footer__tag" data-i18n="footerTag">L'atelier qui met vos émotions en scène. Scénographie & décoration événementielle — Kouba, Alger.</p>
       </div>
       <nav class="footer__nav" aria-label="Pied de page">
-        <a href="#atelier" data-i18n="navAtelier">L'atelier</a>
-        <a href="#services" data-i18n="navServices">Savoir-faire</a>
-        <a href="#realisations" data-i18n="navReal">Réalisations</a>
-        <a href="#formules" data-i18n="navFormules">Formules</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="index.html" data-i18n="navHome">Accueil</a>
+        <a href="realisations.html" data-i18n="navReal">Réalisations</a>
+        <a href="produits.html" data-i18n="navProducts">Produits & Formules</a>
+        <a href="contact.html" data-i18n="navDevis">Contact & Devis</a>
       </nav>
       <div class="footer__social">
         <a href="https://www.instagram.com/eventslabs.dz" target="_blank" rel="noopener">Instagram</a>
@@ -673,18 +725,21 @@
     </div>
     <div class="wrap footer__bottom">
       <span>© <span id="year">2026</span> Events Labs — <span data-i18n="footerRights">Tous droits réservés.</span></span>
+      <a class="footer__top" href="#ouverture" data-i18n="backTop">Retour en haut ↑</a>
       <span class="footer__credit" data-i18n="footerMade">Conçu & fabriqué avec soin à Alger.</span>
     </div>
   </footer>
 
   <!-- Bouton WhatsApp flottant -->
-  <a class="fab-wa" data-wa href="#contact" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.43 1.32-1.96 1.37-.5.05-1.14.21-3.7-.79-3.12-1.23-5.1-4.42-5.26-4.63-.15-.21-1.25-1.66-1.25-3.17 0-1.51.79-2.25 1.07-2.56.28-.31.61-.39.81-.39.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.61.86 2.12.93 2.27.07.15.12.33.02.53-.1.21-.15.33-.3.51-.15.18-.32.4-.45.54-.15.15-.31.31-.13.62.18.31.79 1.31 1.7 2.12 1.17 1.04 2.16 1.36 2.47 1.51.31.15.49.13.67-.08.18-.21.77-.9.98-1.21.21-.31.41-.26.69-.15.28.1 1.78.84 2.08.99.31.15.51.23.59.36.07.13.07.74-.18 1.43Z"/></svg>
+  <a class="fab-wa" data-wa href="contact.html" aria-label="WhatsApp" data-i18n-aria="aWa">
+    <svg aria-hidden="true"><use href="#i-wa"/></svg>
   </a>
 
   <!-- Lightbox -->
   <dialog class="lightbox" id="lightbox" aria-label="Aperçu de la réalisation">
-    <button class="lightbox__close" type="button" aria-label="Fermer">×</button>
+    <button class="lightbox__close" type="button" aria-label="Fermer" data-i18n-aria="aClose">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Précédent" data-i18n-aria="aPrev"><svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg></button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Suivant" data-i18n-aria="aNext"><svg><use href="#i-arr"/></svg></button>
     <div class="lightbox__inner"></div>
   </dialog>
 

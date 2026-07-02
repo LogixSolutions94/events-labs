@@ -1,19 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <radialGradient id="hg" cx="50%" cy="8%" r="70%">
-      <stop offset="0%" stop-color="#1b2a44"/>
-      <stop offset="55%" stop-color="#101a2e"/>
-      <stop offset="100%" stop-color="#0e1726"/>
+    <radialGradient id="hg" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#2c0f18"/>
+      <stop offset="55%" stop-color="#17110c"/>
+      <stop offset="100%" stop-color="#0f0b08"/>
     </radialGradient>
-    <radialGradient id="hglow" cx="72%" cy="18%" r="45%">
-      <stop offset="0%" stop-color="#c9a86a" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#c9a86a" stop-opacity="0"/>
+    <radialGradient id="hspot" cx="50%" cy="40%" r="34%">
+      <stop offset="0%" stop-color="#ecc57e" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ecc57e" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1600" height="900" fill="url(#hg)"/>
-  <rect width="1600" height="900" fill="url(#hglow)"/>
-  <g stroke="#c9a86a" fill="none" opacity="0.16">
-    <path d="M1080 900 V470 A300 300 0 0 1 1680 470 V900" stroke-width="1.4"/>
-    <path d="M1140 900 V480 A240 240 0 0 1 1620 480 V900" stroke-width="1"/>
-  </g>
+  <rect width="1600" height="900" fill="url(#hspot)"/>
+  <path d="M800 380c2.6 20.5 14.5 32.4 35 35-20.5 2.6-32.4 14.5-35 35-2.6-20.5-14.5-32.4-35-35 20.5-2.6 32.4-14.5 35-35Z" fill="#c49a58" opacity="0.5"/>
 </svg>
