@@ -1,5 +1,5 @@
 /* =========================================================================
-   EVENTS LABS — « Le Grand Soir » · interactions
+   EVENTS LABS — « Le Grand Soir » · interactions (toutes pages)
    ========================================================================= */
 
 /* -------------------------------------------------------------------------
@@ -103,15 +103,16 @@ $$(".lang__btn").forEach(btn =>
 );
 
 /* =========================================================================
-   2. Rideau d'ouverture — une fois par session
+   2. Rideau d'ouverture — landing uniquement, une fois par session
    ========================================================================= */
 const curtain = $("#curtain");
 (function intro() {
-  let seen; try { seen = sessionStorage.getItem("el-intro"); } catch (e) {}
   const raise = () => document.body.classList.add("is-raised");
+  if (!curtain) { requestAnimationFrame(() => setTimeout(raise, 80)); return; }
 
-  if (!curtain || REDUCE || seen) {
-    if (curtain) curtain.classList.add("is-gone");
+  let seen; try { seen = sessionStorage.getItem("el-intro"); } catch (e) {}
+  if (REDUCE || seen) {
+    curtain.classList.add("is-gone");
     requestAnimationFrame(() => setTimeout(raise, 80));
     return;
   }
@@ -141,14 +142,19 @@ let lastY = 0;
 
 function onScroll() {
   const y = window.scrollY;
-  header.classList.toggle("is-scrolled", y > 40);
-  header.classList.toggle("is-hidden", y > 420 && y > lastY && !document.body.classList.contains("menu-open"));
+  if (header) {
+    header.classList.toggle("is-scrolled", y > 40);
+    header.classList.toggle("is-hidden", y > 420 && y > lastY && !document.body.classList.contains("menu-open"));
+  }
   lastY = y;
 
   const max = document.documentElement.scrollHeight - window.innerHeight;
   if (progressBar) progressBar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
 
-  if (fab && hero) fab.classList.toggle("is-on", y > hero.offsetHeight * 0.6);
+  if (fab) {
+    const gate = hero ? hero.offsetHeight * 0.6 : 420;
+    fab.classList.toggle("is-on", y > gate);
+  }
 }
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
@@ -159,18 +165,19 @@ window.addEventListener("scroll", onScroll, { passive: true });
 const burger = $(".burger");
 const mnav = $("#mobileNav");
 function toggleMenu(open) {
+  if (!mnav || !burger) return;
   const isOpen = open ?? !mnav.classList.contains("is-open");
   mnav.classList.toggle("is-open", isOpen);
   mnav.setAttribute("aria-hidden", String(!isOpen));
   burger.setAttribute("aria-expanded", String(isOpen));
   document.body.classList.toggle("menu-open", isOpen);
   document.body.style.overflow = isOpen ? "hidden" : "";
-  if (isOpen) header.classList.remove("is-hidden");
+  if (isOpen && header) header.classList.remove("is-hidden");
 }
-burger.addEventListener("click", () => toggleMenu());
+if (burger) burger.addEventListener("click", () => toggleMenu());
 $$("#mobileNav a").forEach(a => a.addEventListener("click", () => toggleMenu(false)));
 window.addEventListener("keydown", e => {
-  if (e.key === "Escape" && mnav.classList.contains("is-open")) toggleMenu(false);
+  if (e.key === "Escape" && mnav && mnav.classList.contains("is-open")) toggleMenu(false);
 });
 
 /* =========================================================================
@@ -180,37 +187,39 @@ const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matc
 if (finePointer && !REDUCE) {
   const dot = $(".cursor-dot");
   const ring = $(".cursor-ring");
-  let tx = -100, ty = -100, rx = -100, ry = -100, shown = false;
+  if (dot && ring) {
+    let tx = -100, ty = -100, rx = -100, ry = -100, shown = false;
 
-  window.addEventListener("mousemove", e => {
-    tx = e.clientX; ty = e.clientY;
-    if (!shown) { shown = true; document.body.classList.add("has-cursor"); }
-  }, { passive: true });
-  document.addEventListener("mouseleave", () => {
-    shown = false; document.body.classList.remove("has-cursor");
-  });
+    window.addEventListener("mousemove", e => {
+      tx = e.clientX; ty = e.clientY;
+      if (!shown) { shown = true; document.body.classList.add("has-cursor"); }
+    }, { passive: true });
+    document.addEventListener("mouseleave", () => {
+      shown = false; document.body.classList.remove("has-cursor");
+    });
 
-  (function loop() {
-    rx += (tx - rx) * 0.16; ry += (ty - ry) * 0.16;
-    dot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
-    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-    requestAnimationFrame(loop);
-  })();
+    (function loop() {
+      rx += (tx - rx) * 0.16; ry += (ty - ry) * 0.16;
+      dot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loop);
+    })();
 
-  // Délégation : survit aux changements de DOM (filtres, i18n)
-  document.addEventListener("mouseover", e => {
-    const view = e.target.closest("[data-cursor='view']");
-    const inter = e.target.closest("a, button, .filter, .acc__head");
-    ring.classList.toggle("is-view", !!view);
-    ring.classList.toggle("is-hover", !view && !!inter);
-  });
+    // Délégation : survit aux changements de DOM (filtres, i18n)
+    document.addEventListener("mouseover", e => {
+      const view = e.target.closest("[data-cursor='view']");
+      const inter = e.target.closest("a, button, .filter, .acc__head");
+      ring.classList.toggle("is-view", !!view);
+      ring.classList.toggle("is-hover", !view && !!inter);
+    });
+  }
 }
 
 /* =========================================================================
    6. Projecteur du hero — la lumière suit le curseur
    ========================================================================= */
 const spot = $(".hero__spot");
-if (spot && !REDUCE) {
+if (spot && hero && !REDUCE) {
   let mx = null, my = null, sx = 50, sy = 42;
   hero.addEventListener("pointermove", e => {
     const r = hero.getBoundingClientRect();
@@ -232,7 +241,60 @@ if (spot && !REDUCE) {
 }
 
 /* =========================================================================
-   7. Reveals au scroll
+   7. Lucioles — particules dorées sur les fonds de scène
+   ========================================================================= */
+if (!REDUCE) {
+  $$(".sparks").forEach(canvas => {
+    const ctx = canvas.getContext("2d");
+    let w = 0, h = 0, parts = [], running = false, raf = 0;
+
+    const resize = () => {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+      const count = Math.max(14, Math.min(40, Math.round(w / 40)));
+      parts = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: .6 + Math.random() * 1.5,
+        vy: .1 + Math.random() * .28,
+        drift: .6 + Math.random() * 1.4,
+        ph: Math.random() * Math.PI * 2,
+        tw: .8 + Math.random() * 1.6,
+        warm: Math.random() > .5
+      }));
+    };
+
+    const tick = t => {
+      if (!running) return;
+      ctx.clearRect(0, 0, w, h);
+      for (const p of parts) {
+        p.y -= p.vy;
+        if (p.y < -6) { p.y = h + 6; p.x = Math.random() * w; }
+        const x = p.x + Math.sin(t / 1400 * p.drift + p.ph) * 14;
+        const a = .16 + .3 * (0.5 + 0.5 * Math.sin(t / 900 * p.tw + p.ph));
+        ctx.beginPath();
+        ctx.arc(x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.warm
+          ? `rgba(236, 197, 126, ${a})`
+          : `rgba(196, 154, 88, ${a})`;
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const start = () => { if (!running) { running = true; raf = requestAnimationFrame(tick); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+
+    resize();
+    window.addEventListener("resize", resize);
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()),
+      { threshold: 0.05 }).observe(canvas);
+    document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+  });
+}
+
+/* =========================================================================
+   8. Reveals au scroll (+ ornements dessinés)
    ========================================================================= */
 if (!REDUCE) {
   const io = new IntersectionObserver(entries => {
@@ -240,19 +302,19 @@ if (!REDUCE) {
       if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -7% 0px" });
-  $$(".rv, .t-reveal").forEach(el => io.observe(el));
+  $$(".rv, .t-reveal, .draw").forEach(el => io.observe(el));
 } else {
-  $$(".rv, .t-reveal").forEach(el => el.classList.add("is-in"));
+  $$(".rv, .t-reveal, .draw").forEach(el => el.classList.add("is-in"));
 }
 
 /* =========================================================================
-   8. Rail des actes : section active + thème clair/sombre
+   9. Rail des actes (landing) : section active + thème clair/sombre
    ========================================================================= */
 const rail = $(".rail");
 if (rail) {
   const dots = $$(".rail__dot", rail);
   const paperIds = new Set(["atelier", "services", "approche", "formules"]);
-  const sections = ["ouverture", "atelier", "services", "realisations", "approche", "formules", "contact"]
+  const sections = ["ouverture", "atelier", "services", "realisations", "approche", "formules", "rsvp"]
     .map(id => document.getElementById(id)).filter(Boolean);
 
   const sio = new IntersectionObserver(entries => {
@@ -275,7 +337,7 @@ if (rail) {
 }
 
 /* =========================================================================
-   9. Compteurs
+   10. Compteurs
    ========================================================================= */
 function animateCount(el) {
   const target = parseInt(el.dataset.count, 10);
@@ -296,32 +358,33 @@ const statsIO = new IntersectionObserver(entries => {
 $$("[data-count]").forEach(el => statsIO.observe(el));
 
 /* =========================================================================
-   10. Accordéon savoir-faire — un seul volet ouvert
+   11. Accordéons (savoir-faire, FAQ) — un seul volet ouvert par groupe
    ========================================================================= */
-const accItems = $$(".acc__item");
-accItems.forEach(item => {
-  $(".acc__head", item).addEventListener("click", () => {
-    const wasOpen = item.classList.contains("is-open");
-    accItems.forEach(i => {
-      i.classList.remove("is-open");
-      $(".acc__head", i).setAttribute("aria-expanded", "false");
+$$(".acc").forEach(group => {
+  const items = $$(".acc__item", group);
+  items.forEach(item => {
+    $(".acc__head", item).addEventListener("click", () => {
+      const wasOpen = item.classList.contains("is-open");
+      items.forEach(i => {
+        i.classList.remove("is-open");
+        $(".acc__head", i).setAttribute("aria-expanded", "false");
+      });
+      if (!wasOpen) {
+        item.classList.add("is-open");
+        $(".acc__head", item).setAttribute("aria-expanded", "true");
+      }
     });
-    if (!wasOpen) {
-      item.classList.add("is-open");
-      $(".acc__head", item).setAttribute("aria-expanded", "true");
-    }
   });
 });
 
 /* =========================================================================
-   11. Filmstrip réalisations : drag, flèches, progression, filtres
+   12. Filmstrip (landing) : drag, flèches, progression
    ========================================================================= */
 const strip = $("#strip");
 const stripBar = $("#stripBar");
 if (strip) {
   const rtl = () => document.documentElement.getAttribute("dir") === "rtl";
 
-  // Progression
   const updateBar = () => {
     const max = strip.scrollWidth - strip.clientWidth;
     const p = max > 0 ? Math.min(Math.abs(strip.scrollLeft) / max, 1) : 0;
@@ -331,14 +394,12 @@ if (strip) {
   window.addEventListener("resize", updateBar);
   updateBar();
 
-  // Flèches
   const stepPx = () => Math.min(strip.clientWidth * 0.7, 460);
   $("#stripNext")?.addEventListener("click", () =>
     strip.scrollBy({ left: (rtl() ? -1 : 1) * stepPx(), behavior: "smooth" }));
   $("#stripPrev")?.addEventListener("click", () =>
     strip.scrollBy({ left: (rtl() ? 1 : -1) * stepPx(), behavior: "smooth" }));
 
-  // Drag to scroll (souris)
   let down = false, moved = false, startX = 0, startSL = 0;
   strip.addEventListener("pointerdown", e => {
     if (e.pointerType !== "mouse") return;
@@ -354,28 +415,31 @@ if (strip) {
   window.addEventListener("pointerup", () => {
     if (!down) return;
     down = false;
-    // laisse passer l'éventuel clic avorté avant de réactiver
     setTimeout(() => strip.classList.remove("is-dragging"), 40);
   });
+}
 
-  // Filtres
-  const filters = $$(".filter");
-  filters.forEach(btn => {
+/* =========================================================================
+   13. Filtres de galerie (landing + page réalisations)
+   ========================================================================= */
+const shotsBox = $("[data-shots]");
+const filterBtns = $$(".filter");
+if (shotsBox && filterBtns.length) {
+  filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      filters.forEach(b => b.classList.remove("is-active"));
+      filterBtns.forEach(b => b.classList.remove("is-active"));
       btn.classList.add("is-active");
       const f = btn.dataset.filter;
-      $$(".shot", strip).forEach(shot => {
+      $$(".shot", shotsBox).forEach(shot => {
         shot.classList.toggle("is-hidden", f !== "all" && shot.dataset.cat !== f);
       });
-      strip.scrollTo({ left: 0, behavior: "smooth" });
-      updateBar();
+      if (shotsBox === strip) strip.scrollTo({ left: 0, behavior: "smooth" });
     });
   });
 }
 
 /* =========================================================================
-   12. Vignettes vidéo : chargement paresseux + lecture si visible
+   14. Vignettes vidéo : chargement paresseux + lecture si visible
    ========================================================================= */
 if (!REDUCE) {
   const vio = new IntersectionObserver(entries => {
@@ -394,36 +458,61 @@ if (!REDUCE) {
 }
 
 /* =========================================================================
-   13. Lightbox
+   15. Lightbox avec navigation
    ========================================================================= */
 const lightbox = $("#lightbox");
-const lbInner = $(".lightbox__inner");
-function openLightbox(shot) {
-  const cat = $(".shot__cat", shot)?.textContent || "";
-  const name = $(".shot__name", shot)?.textContent || "";
-  const vid = $(".shot__video", shot);
-  const img = $(".shot__media img", shot);
-  const fill = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
-  let media = "";
-  if (vid) {
-    const src = vid.getAttribute("src") || vid.dataset.src;
-    media = `<video src="${src}" autoplay loop muted playsinline controls style="${fill}"></video>`;
-  } else if (img) {
-    media = `<img src="${img.src}" alt="" style="${fill}" />`;
+if (lightbox) {
+  const lbInner = $(".lightbox__inner");
+  let lbIndex = 0;
+
+  const visibleShots = () => $$(".shot").filter(s => !s.classList.contains("is-hidden"));
+
+  function renderLightbox(shot) {
+    const cat = $(".shot__cat", shot)?.textContent || "";
+    const name = $(".shot__name", shot)?.textContent || "";
+    const vid = $(".shot__video", shot);
+    const img = $(".shot__media img", shot);
+    const fill = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
+    let media = "";
+    if (vid) {
+      const src = vid.getAttribute("src") || vid.dataset.src;
+      media = `<video src="${src}" autoplay loop muted playsinline controls style="${fill}"></video>`;
+    } else if (img) {
+      media = `<img src="${img.src}" alt="" style="${fill}" />`;
+    }
+    lbInner.innerHTML = media + `<div class="lb-cap"><span class="lb-cat">${cat}</span><span class="lb-name">${name}</span></div>`;
   }
-  lbInner.innerHTML = media + `<div class="lb-cap"><span class="lb-cat">${cat}</span><span class="lb-name">${name}</span></div>`;
-  if (typeof lightbox.showModal === "function") lightbox.showModal();
+
+  function openLightbox(shot) {
+    lbIndex = visibleShots().indexOf(shot);
+    renderLightbox(shot);
+    if (typeof lightbox.showModal === "function") lightbox.showModal();
+  }
+  function stepLightbox(dir) {
+    const list = visibleShots();
+    if (!list.length) return;
+    lbIndex = (lbIndex + dir + list.length) % list.length;
+    renderLightbox(list[lbIndex]);
+  }
+
+  $$(".shot").forEach(shot => shot.addEventListener("click", () => {
+    if (strip && strip.classList.contains("is-dragging")) return;
+    openLightbox(shot);
+  }));
+  $(".lightbox__close")?.addEventListener("click", () => lightbox.close());
+  $(".lightbox__nav--prev")?.addEventListener("click", () => stepLightbox(-1));
+  $(".lightbox__nav--next")?.addEventListener("click", () => stepLightbox(1));
+  lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.close(); });
+  lightbox.addEventListener("close", () => { lbInner.innerHTML = ""; });
+  window.addEventListener("keydown", e => {
+    if (!lightbox.open) return;
+    if (e.key === "ArrowRight") stepLightbox(1);
+    if (e.key === "ArrowLeft") stepLightbox(-1);
+  });
 }
-$$(".shot").forEach(shot => shot.addEventListener("click", () => {
-  if (strip && strip.classList.contains("is-dragging")) return;
-  openLightbox(shot);
-}));
-$(".lightbox__close").addEventListener("click", () => lightbox.close());
-lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.close(); });
-lightbox.addEventListener("close", () => { lbInner.innerHTML = ""; });
 
 /* =========================================================================
-   14. Témoignages : carrousel auto + navigation
+   16. Témoignages : carrousel auto + navigation
    ========================================================================= */
 const qcar = $("#qcar");
 if (qcar) {
@@ -436,12 +525,12 @@ if (qcar) {
     slides.forEach((s, j) => s.classList.toggle("is-active", j === idx));
     if (count) count.textContent = `${idx + 1} / ${slides.length}`;
   };
+  const stop = () => { if (timer) clearInterval(timer); timer = null; };
   const play = () => {
     if (REDUCE) return;
     stop();
     timer = setInterval(() => show(idx + 1), 7000);
   };
-  const stop = () => { if (timer) clearInterval(timer); timer = null; };
 
   $("#qNext")?.addEventListener("click", () => { show(idx + 1); play(); });
   $("#qPrev")?.addEventListener("click", () => { show(idx - 1); play(); });
@@ -454,26 +543,26 @@ if (qcar) {
 }
 
 /* =========================================================================
-   15. Formulaire R.S.V.P. -> WhatsApp ou e-mail
+   17. Formulaire R.S.V.P. -> WhatsApp ou e-mail
    ========================================================================= */
 const form = $("#quoteForm");
 if (form) {
   const LABELS = {
-    fr: { intro: "Bonjour Events Labs 👋", n: "Nom", t: "Événement", d: "Date", m: "Projet" },
-    ar: { intro: "مرحبًا Events Labs 👋", n: "الاسم", t: "المناسبة", d: "التاريخ", m: "المشروع" },
-    en: { intro: "Hello Events Labs 👋", n: "Name", t: "Event", d: "Date", m: "Project" }
+    fr: { intro: "Bonjour Events Labs 👋", n: "Nom", p: "Téléphone", t: "Événement", d: "Date", l: "Lieu", g: "Invités", b: "Budget", m: "Projet" },
+    ar: { intro: "مرحبًا Events Labs 👋", n: "الاسم", p: "الهاتف", t: "المناسبة", d: "التاريخ", l: "المكان", g: "الضيوف", b: "الميزانية", m: "المشروع" },
+    en: { intro: "Hello Events Labs 👋", n: "Name", p: "Phone", t: "Event", d: "Date", l: "Venue", g: "Guests", b: "Budget", m: "Project" }
   };
+  const val = id => $(id)?.value?.trim() || "";
+
   function formMessage() {
     const L = LABELS[currentLang] || LABELS.fr;
-    const name = $("#f-name").value.trim();
-    const type = $("#f-type").value;
-    const date = $("#f-date").value.trim();
-    const msg  = $("#f-msg").value.trim();
     let t = `${L.intro}\n`;
-    if (name) t += `\n${L.n}: ${name}`;
-    if (type) t += `\n${L.t}: ${type}`;
-    if (date) t += `\n${L.d}: ${date}`;
-    if (msg)  t += `\n${L.m}: ${msg}`;
+    const rows = [
+      [L.n, val("#f-name")], [L.p, val("#f-phone")], [L.t, val("#f-type")],
+      [L.d, val("#f-date")], [L.l, val("#f-place")], [L.g, val("#f-guests")],
+      [L.b, val("#f-budget")], [L.m, val("#f-msg")]
+    ];
+    for (const [label, v] of rows) if (v) t += `\n${label}: ${v}`;
     return t;
   }
   form.addEventListener("submit", e => {
@@ -487,7 +576,7 @@ if (form) {
 }
 
 /* =========================================================================
-   16. Année du footer
+   18. Année du footer
    ========================================================================= */
 const yearEl = $("#year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();

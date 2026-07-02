@@ -81,11 +81,14 @@ les médias ; le grain global du site les unifie.
 Ajuster les `data-count` (section chiffres) dans `index.html` et les
 témoignages dans `assets/js/i18n.js` (clés `q1…q3`, 3 langues).
 
-## Structure
+## Structure (4 pages)
 
 ```
 events-labs/
-├── index.html              # structure + SEO + JSON-LD
+├── index.html              # landing : hero, atelier, savoir-faire, aperçus, R.S.V.P.
+├── realisations.html       # galerie complète (filtres, grille, lightbox)
+├── produits.html           # formules + catalogue de location
+├── contact.html            # contact & devis (formulaire complet, FAQ)
 ├── assets/
 │   ├── css/styles.css      # design system complet « Le Grand Soir »
 │   ├── js/i18n.js          # traductions FR / AR / EN (data-i18n, -aria, -ph)
@@ -94,6 +97,14 @@ events-labs/
 │   └── video/hero.mp4      # vidéo de fond du hero
 └── README.md
 ```
+
+### Graphismes dynamiques
+
+Lucioles dorées (canvas) sur les fonds de scène, et ornements en filet d'or
+**dessinés au scroll** : branche florale (atelier), anneaux entrelacés
+(approche), arche de mariage (réalisations), lustre (produits), service à thé
+(contact), lanterne fanous (bandeaux R.S.V.P.). Aucune référence à l'alcool —
+site pensé pour le marché algérien.
 
 ## Vidéo du hero
 

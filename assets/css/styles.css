@@ -1407,9 +1407,233 @@ html.no-motion .fab-wa::before { animation: none; }
   .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   MULTI-PAGES : en-têtes de page, ornements, lucioles, galerie, produits,
+   FAQ, bandeau R.S.V.P., navigation active
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Navigation : page active ─────────────────────────────────────────── */
+.nav a[aria-current="page"] { color: var(--paper); }
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
+.mnav__links a[aria-current="page"] { color: var(--flame); }
+
+/* ── Lucioles (canvas) ────────────────────────────────────────────────── */
+.sparks {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Ornements dessinés au scroll ─────────────────────────────────────── */
+.orn { pointer-events: none; }
+.draw path, .draw circle {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.9s var(--e-io);
+}
+.draw.is-in path, .draw.is-in circle { stroke-dashoffset: 0; }
+.draw path:nth-of-type(2), .draw circle:nth-of-type(1) { transition-delay: .35s; }
+.draw path:nth-of-type(3) { transition-delay: .6s; }
+.draw path:nth-of-type(4) { transition-delay: .85s; }
+.draw path:nth-of-type(5) { transition-delay: 1.05s; }
+.draw path:nth-of-type(6) { transition-delay: 1.25s; }
+.draw path:nth-of-type(7) { transition-delay: 1.45s; }
+.draw path:nth-of-type(8) { transition-delay: 1.6s; }
+.draw circle:nth-of-type(2) { transition-delay: 1.7s; }
+html.no-motion .draw path, html.no-motion .draw circle {
+  stroke-dasharray: none; stroke-dashoffset: 0; transition: none;
+}
+
+/* Placements */
+.atelier__branch {
+  position: absolute;
+  inset-inline-end: clamp(-10px, 2vw, 40px);
+  bottom: -20px;
+  width: clamp(70px, 9vw, 120px);
+  opacity: .8;
+}
+@media (max-width: 860px) { .atelier__branch { display: none; } }
+.atelier__pull { position: relative; }
+.approche__rings {
+  width: clamp(90px, 10vw, 130px);
+  margin-top: clamp(24px, 3vw, 44px);
+  opacity: .9;
+}
+
+/* ── En-tête de page (sous-pages) ─────────────────────────────────────── */
+.phero {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(50px, 8vh, 110px));
+  padding-bottom: clamp(50px, 7vw, 100px);
+  background:
+    radial-gradient(110% 90% at 50% -20%, rgba(58,20,32,.75), transparent 65%),
+    var(--stage);
+  color: var(--paper);
+  border-bottom: 1px solid var(--line-gold);
+  overflow: hidden;
+}
+.phero__inner { position: relative; z-index: 2; }
+.phero__title {
+  font-family: var(--f-display);
+  font-optical-sizing: auto;
+  font-size: clamp(2.6rem, 6.5vw, 5.6rem);
+  line-height: 1.02;
+  max-width: 16ch;
+  margin-bottom: clamp(16px, 2vw, 26px);
+  text-wrap: balance;
+}
+html[lang="ar"] .phero__title { line-height: 1.25; }
+.phero__lead { max-width: 52ch; color: var(--ivory-soft); }
+.phero__orn {
+  position: absolute;
+  inset-inline-end: clamp(16px, 7vw, 130px);
+  bottom: clamp(20px, 5vw, 60px);
+  width: clamp(110px, 14vw, 190px);
+  opacity: .75;
+  z-index: 1;
+}
+@media (max-width: 900px) { .phero__orn { width: 90px; opacity: .4; } }
+
+/* ── Galerie complète (grille) ────────────────────────────────────────── */
+.gallery { padding-top: clamp(40px, 5vw, 70px); }
+.gallery .work__bar { margin-bottom: clamp(30px, 4vw, 50px); }
+.gallery .work__note { font-size: .85rem; max-width: 34ch; text-align: end; }
+@media (max-width: 800px) { .gallery .work__note { display: none; } }
+.ggrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(18px, 2.4vw, 34px);
+  row-gap: clamp(40px, 4vw, 60px);
+}
+@media (max-width: 1100px) { .ggrid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 780px)  { .ggrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px)  { .ggrid { grid-template-columns: 1fr; } }
+.ggrid .shot { width: auto; }
+/* Rythme éditorial : une vignette sur trois descend légèrement */
+@media (min-width: 781px) {
+  .ggrid .shot:nth-child(3n+2) { transform: translateY(22px); }
+  .ggrid .shot:nth-child(3n+2).rv { transform: translateY(50px); }
+  .ggrid .shot:nth-child(3n+2).rv.is-in { transform: translateY(22px); }
+}
+.gallery .work__cta { margin-top: clamp(50px, 6vw, 80px); text-align: center; }
+
+/* ── Produits / location ──────────────────────────────────────────────── */
+.location__note {
+  margin-top: 18px;
+  color: var(--ivory-soft);
+  max-width: 56ch;
+}
+.prods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 1.8vw, 24px);
+  margin-top: clamp(34px, 4vw, 56px);
+}
+@media (max-width: 1080px) { .prods { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .prods { grid-template-columns: 1fr; } }
+.prod {
+  position: relative;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: clamp(20px, 2.2vw, 30px);
+  border: 1px solid rgba(196,154,88,.22);
+  background: linear-gradient(170deg, rgba(58,20,32,.24), rgba(15,11,8,0) 55%);
+  transition: transform .5s var(--e-out), border-color .4s ease, background-color .4s ease;
+}
+.prod:hover { transform: translateY(-5px); border-color: var(--brass); }
+.prod__num {
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(236,197,126,.5);
+}
+.prod__name {
+  font-family: var(--f-display);
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  color: var(--paper);
+}
+.prod__desc { font-size: .9rem; color: var(--ivory-soft); flex: 1; }
+.prod__tag {
+  align-self: flex-start;
+  font-family: var(--f-mono); font-size: .58rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--flame);
+  border: 1px solid var(--line-gold);
+  padding: 5px 10px;
+}
+.location .work__cta { text-align: center; }
+
+/* ── FAQ (accordéon sur papier, plus compact) ─────────────────────────── */
+.acc--faq .acc__title { font-size: clamp(1.15rem, 2.2vw, 1.7rem); }
+.acc--faq .acc__head { padding-block: clamp(16px, 2vw, 24px); }
+.acc--faq .acc__desc { padding-bottom: clamp(18px, 2.4vw, 28px); }
+
+/* ── Bandeau R.S.V.P. ─────────────────────────────────────────────────── */
+.banner {
+  overflow: hidden;
+  border-top: 1px solid var(--line-gold);
+  text-align: center;
+}
+.banner__inner {
+  position: relative; z-index: 2;
+  display: grid; justify-items: center; gap: clamp(14px, 2vw, 22px);
+}
+.banner__lantern { width: clamp(64px, 7vw, 92px); }
+.banner__title {
+  font-family: var(--f-display);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1.05;
+}
+.banner__text { color: var(--ivory-soft); max-width: 44ch; }
+.banner__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ── Aperçu programme : lien "tout voir" ──────────────────────────────── */
+.pricing__more { margin-top: clamp(34px, 4vw, 54px); text-align: center; }
+.link-arrow--ink { color: var(--ink); border-bottom-color: var(--line-ink); }
+.link-arrow--ink:hover { color: var(--brass-dim); border-bottom-color: var(--brass); }
+
+/* ── Pied de page : retour en haut ────────────────────────────────────── */
+.footer__top {
+  font-family: var(--f-mono); font-size: .7rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ivory-soft);
+  transition: color .3s ease;
+}
+.footer__top:hover { color: var(--flame); }
+
+/* ── Lightbox : navigation précédent / suivant ────────────────────────── */
+.lightbox__nav {
+  position: absolute; top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 48px; height: 48px;
+  border: 1px solid var(--line-gold);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--paper);
+  background: rgba(15, 11, 8, .55);
+  transition: background-color .3s ease, color .3s ease;
+}
+.lightbox__nav svg { width: 17px; height: 17px; fill: none; stroke: currentColor; }
+.lightbox__nav:hover { background: var(--brass); color: var(--stage); }
+.lightbox__nav--prev { left: -14px; }
+.lightbox__nav--next { right: -14px; }
+@media (max-width: 700px) {
+  .lightbox__nav--prev { left: 8px; }
+  .lightbox__nav--next { right: 8px; }
+}
+
 /* ── Réduction de mouvement ───────────────────────────────────────────── */
 html.no-motion .grain { animation: none; }
 html.no-motion .curtain { display: none; }
+html.no-motion .sparks { display: none; }
 html.no-motion .hero__scroll-line,
 html.no-motion .hero__eyebrow-star,
 html.no-motion .hero__avail-dot,

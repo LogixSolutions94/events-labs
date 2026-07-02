@@ -73,9 +73,9 @@
   </script>
 </head>
 
-<body>
+<body data-page="home">
 
-  <!-- Sprite d'icônes -->
+  <!-- Sprite d'icônes & ornements -->
   <svg class="sr-sprite" aria-hidden="true" focusable="false">
     <defs>
       <symbol id="i-star" viewBox="0 0 24 24">
@@ -117,7 +117,7 @@
   <!-- En-tête -->
   <header class="header" id="header">
     <div class="header__inner">
-      <a href="#ouverture" class="brand" aria-label="Events Labs — accueil">
+      <a href="index.html" class="brand" aria-label="Events Labs — accueil">
         <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
           <circle cx="20" cy="20" r="18.6" fill="none" stroke="currentColor" stroke-width="1"/>
           <path d="M20 8c.75 5.75 4.08 9.08 10 10-5.92.92-9.25 4.25-10 10-.75-5.75-4.08-9.08-10-10 5.92-.92 9.25-4.25 10-10Z" fill="currentColor"/>
@@ -129,12 +129,10 @@
       </a>
 
       <nav class="nav" aria-label="Navigation principale">
-        <a href="#atelier" data-i18n="navAtelier">L'atelier</a>
-        <a href="#services" data-i18n="navServices">Savoir-faire</a>
-        <a href="#realisations" data-i18n="navReal">Réalisations</a>
-        <a href="#approche" data-i18n="navApproche">Approche</a>
-        <a href="#formules" data-i18n="navFormules">Programme</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="index.html" aria-current="page" data-i18n="navHome">Accueil</a>
+        <a href="realisations.html" data-i18n="navReal">Réalisations</a>
+        <a href="produits.html" data-i18n="navProducts">Produits & Formules</a>
+        <a href="contact.html" data-i18n="navDevis">Contact & Devis</a>
       </nav>
 
       <div class="header__end">
@@ -143,7 +141,7 @@
           <button class="lang__btn" data-lang="ar" type="button" lang="ar">عربي</button>
           <button class="lang__btn" data-lang="en" type="button">EN</button>
         </div>
-        <a class="btn btn--line header__cta" data-wa href="#contact">
+        <a class="btn btn--line header__cta" data-wa href="contact.html">
           <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
           <span data-i18n="ctaQuote">Devis WhatsApp</span>
         </a>
@@ -157,15 +155,13 @@
   <!-- Menu mobile -->
   <div class="mnav" id="mobileNav" aria-hidden="true">
     <nav class="mnav__links" aria-label="Navigation mobile">
-      <a href="#atelier"><i>01</i><span data-i18n="navAtelier">L'atelier</span></a>
-      <a href="#services"><i>02</i><span data-i18n="navServices">Savoir-faire</span></a>
-      <a href="#realisations"><i>03</i><span data-i18n="navReal">Réalisations</span></a>
-      <a href="#approche"><i>04</i><span data-i18n="navApproche">Approche</span></a>
-      <a href="#formules"><i>05</i><span data-i18n="navFormules">Programme</span></a>
-      <a href="#contact"><i>06</i><span data-i18n="navContact">Contact</span></a>
+      <a href="index.html"><i>01</i><span data-i18n="navHome">Accueil</span></a>
+      <a href="realisations.html"><i>02</i><span data-i18n="navReal">Réalisations</span></a>
+      <a href="produits.html"><i>03</i><span data-i18n="navProducts">Produits & Formules</span></a>
+      <a href="contact.html"><i>04</i><span data-i18n="navDevis">Contact & Devis</span></a>
     </nav>
     <div class="mnav__foot">
-      <a class="btn btn--gold" data-wa href="#contact">
+      <a class="btn btn--gold" data-wa href="contact.html">
         <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
         <span data-i18n="ctaQuote">Devis WhatsApp</span>
       </a>
@@ -181,7 +177,7 @@
     <a href="#realisations" class="rail__dot" data-rail="realisations"><i>03</i><span data-i18n="navReal">Réalisations</span></a>
     <a href="#approche" class="rail__dot" data-rail="approche"><i>04</i><span data-i18n="navApproche">Approche</span></a>
     <a href="#formules" class="rail__dot" data-rail="formules"><i>05</i><span data-i18n="navFormules">Programme</span></a>
-    <a href="#contact" class="rail__dot" data-rail="contact"><i>06</i><span data-i18n="navContact">Contact</span></a>
+    <a href="#rsvp" class="rail__dot" data-rail="rsvp"><i>06</i><span>R.S.V.P.</span></a>
   </aside>
 
   <main id="main">
@@ -194,6 +190,7 @@
         </video>
         <div class="hero__shade"></div>
         <div class="hero__spot"></div>
+        <canvas class="sparks" aria-hidden="true"></canvas>
       </div>
 
       <div class="hero__inner">
@@ -213,13 +210,13 @@
             Mariages, henné, fiançailles, galas, lancements. De la première idée à la dernière lumière éteinte, Events Labs conçoit, fabrique et installe des décors qui ne ressemblent qu'à vous.
           </p>
           <div class="hero__actions rv">
-            <a class="btn btn--gold" data-wa href="#contact">
+            <a class="btn btn--gold" data-wa href="contact.html">
               <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
               <span data-i18n="heroCta1">Réserver ma date</span>
             </a>
-            <a class="btn btn--ghost" href="#realisations" data-cursor="view">
+            <a class="btn btn--ghost" href="realisations.html" data-cursor="view">
               <span data-i18n="heroCta2">Voir les réalisations</span>
-              <svg class="btn__ico btn__ico--arr" aria-hidden="true"><use href="#i-arr"/></svg>
+              <svg class="btn__ico btn__ico--arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
             </a>
           </div>
           <p class="hero__avail rv">
@@ -229,7 +226,6 @@
         </div>
       </div>
 
-      <div class="hero__corner hero__corner--l" aria-hidden="true">Kouba · Alger</div>
       <div class="hero__corner hero__corner--r" aria-hidden="true">EST. 2018</div>
 
       <a href="#atelier" class="hero__scroll">
@@ -282,6 +278,15 @@
           <blockquote class="atelier__pull rv">
             <svg class="atelier__pull-star" aria-hidden="true"><use href="#i-star"/></svg>
             <p data-i18n="atQuote">Vos invités doivent retenir une atmosphère, pas une décoration.</p>
+            <svg class="orn draw atelier__branch" viewBox="0 0 120 160" aria-hidden="true">
+              <path d="M22 152 C 34 110, 44 78, 78 34 C 86 24, 94 16, 104 10" pathLength="1"/>
+              <path d="M38 108 C 26 96, 24 84, 30 72 C 42 78, 46 92, 38 108Z" pathLength="1"/>
+              <path d="M50 82 C 62 74, 74 74, 82 82 C 72 92, 58 92, 50 82Z" pathLength="1"/>
+              <path d="M62 58 C 52 48, 50 38, 56 28 C 66 34, 70 46, 62 58Z" pathLength="1"/>
+              <path d="M78 40 C 88 32, 98 32, 106 38 C 98 48, 86 48, 78 40Z" pathLength="1"/>
+              <circle cx="30" cy="130" r="4" pathLength="1"/>
+              <circle cx="98" cy="20" r="4" pathLength="1"/>
+            </svg>
           </blockquote>
 
           <div class="signature rv">
@@ -385,7 +390,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ ACTE III — RÉALISATIONS ═══════════════ -->
+    <!-- ═══════════════ ACTE III — RÉALISATIONS (aperçu) ═══════════════ -->
     <section class="work section section--stage" id="realisations">
       <div class="wrap">
         <header class="act-head act-head--dark rv">
@@ -396,18 +401,7 @@
 
         <div class="work__intro">
           <h2 class="section__title t-reveal" data-i18n="wkTitle">Des décors qui restent en mémoire.</h2>
-          <p class="work__note rv" data-i18n="wkNote">Un aperçu de notre univers — prêt à accueillir les photographies de vos propres événements.</p>
-        </div>
-
-        <div class="work__bar rv">
-          <div class="filters" role="group" aria-label="Filtrer les réalisations">
-            <button class="filter is-active" data-filter="all" type="button" data-i18n="fAll">Tout</button>
-            <button class="filter" data-filter="mariage" type="button" data-i18n="fWedding">Mariages</button>
-            <button class="filter" data-filter="tradition" type="button" data-i18n="fTradition">Traditions</button>
-            <button class="filter" data-filter="corporate" type="button" data-i18n="fCorporate">Corporate</button>
-            <button class="filter" data-filter="gala" type="button" data-i18n="fGala">Galas</button>
-          </div>
-          <p class="work__drag" aria-hidden="true">
+          <p class="work__drag rv" aria-hidden="true">
             <svg class="work__drag-arr work__drag-arr--l"><use href="#i-arr"/></svg>
             <span data-i18n="wkDrag">Glisser pour explorer</span>
             <svg class="work__drag-arr"><use href="#i-arr"/></svg>
@@ -415,7 +409,7 @@
         </div>
       </div>
 
-      <div class="strip" id="strip">
+      <div class="strip" id="strip" data-shots>
         <figure class="shot rv" data-cat="mariage" data-cursor="view">
           <span class="shot__idx" aria-hidden="true">01</span>
           <div class="shot__media">
@@ -463,44 +457,11 @@
         <figure class="shot rv" data-cat="mariage" data-cursor="view">
           <span class="shot__idx" aria-hidden="true">05</span>
           <div class="shot__media">
-            <video class="shot__video" muted loop playsinline preload="none" data-src="assets/video/work5.mp4"></video>
-          </div>
-          <figcaption class="shot__cap">
-            <span class="shot__cat" data-i18n="capMariage">Mariage</span>
-            <span class="shot__name" data-i18n="proj5">Allée & arche florale</span>
-          </figcaption>
-        </figure>
-
-        <figure class="shot rv" data-cat="gala" data-cursor="view">
-          <span class="shot__idx" aria-hidden="true">06</span>
-          <div class="shot__media">
-            <img src="assets/img/realisations/gala.jpg" alt="Soirée de gala aux bougies" loading="lazy" />
-          </div>
-          <figcaption class="shot__cap">
-            <span class="shot__cat" data-i18n="capGala">Soirée</span>
-            <span class="shot__name" data-i18n="proj6">Mise en lumière « Velours »</span>
-          </figcaption>
-        </figure>
-
-        <figure class="shot rv" data-cat="mariage" data-cursor="view">
-          <span class="shot__idx" aria-hidden="true">07</span>
-          <div class="shot__media">
             <img src="assets/img/realisations/wed.jpg" alt="Centre de table fleuri — mariage" loading="lazy" />
           </div>
           <figcaption class="shot__cap">
             <span class="shot__cat" data-i18n="capMariage">Mariage</span>
             <span class="shot__name" data-i18n="proj7">Table d'honneur « Roseraie »</span>
-          </figcaption>
-        </figure>
-
-        <figure class="shot rv" data-cat="tradition" data-cursor="view">
-          <span class="shot__idx" aria-hidden="true">08</span>
-          <div class="shot__media">
-            <img src="assets/img/realisations/fianc.jpg" alt="Alliances — fiançailles" loading="lazy" />
-          </div>
-          <figcaption class="shot__cap">
-            <span class="shot__cat" data-i18n="capFiancailles">Fiançailles</span>
-            <span class="shot__name" data-i18n="proj8">Fiançailles « Éclat »</span>
           </figcaption>
         </figure>
       </div>
@@ -509,7 +470,7 @@
         <div class="strip-ui__progress" aria-hidden="true"><span class="strip-ui__bar" id="stripBar"></span></div>
         <div class="strip-ui__btns">
           <button class="strip-ui__btn" id="stripPrev" type="button" aria-label="Précédent" data-i18n-aria="aPrev">
-            <svg class="flip-rtl" style="transform:scaleX(-1)"><use href="#i-arr"/></svg>
+            <svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg>
           </button>
           <button class="strip-ui__btn" id="stripNext" type="button" aria-label="Suivant" data-i18n-aria="aNext">
             <svg class="flip-rtl"><use href="#i-arr"/></svg>
@@ -518,8 +479,8 @@
       </div>
 
       <p class="wrap work__cta rv">
-        <a class="link-arrow" data-wa href="#contact">
-          <span data-i18n="wkCta">Discuter de votre projet sur WhatsApp</span>
+        <a class="link-arrow" href="realisations.html">
+          <span data-i18n="wkMore">Entrer dans la galerie complète</span>
           <svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
         </a>
       </p>
@@ -536,6 +497,11 @@
           </header>
           <h2 class="section__title t-reveal" data-i18n="apTitle">Une méthode claire, du sur-mesure, zéro hasard.</h2>
           <p class="approche__note rv" data-i18n="apNote">De la première rencontre au démontage, un seul interlocuteur.</p>
+          <svg class="orn draw approche__rings" viewBox="0 0 140 96" aria-hidden="true">
+            <circle cx="53" cy="54" r="30" pathLength="1"/>
+            <circle cx="87" cy="54" r="30" pathLength="1"/>
+            <path d="M70 4c.7 5.4 3.7 8.4 9 9-5.3.9-8.3 3.9-9 9-.7-5.1-3.7-8.1-9-9 5.3-.6 8.3-3.6 9-9Z" pathLength="1"/>
+          </svg>
         </div>
 
         <ol class="steps">
@@ -593,7 +559,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ ACTE V — LE PROGRAMME ═══════════════ -->
+    <!-- ═══════════════ ACTE V — LE PROGRAMME (aperçu) ═══════════════ -->
     <section class="pricing section section--paper" id="formules">
       <div class="wrap">
         <header class="act-head rv">
@@ -619,7 +585,7 @@
               <li data-i18n="plan1f3">Fleurs & bougies d'ambiance</li>
               <li data-i18n="plan1f4">Installation & démontage inclus</li>
             </ul>
-            <a class="plan__cta" data-wa href="#contact"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            <a class="plan__cta" data-wa href="contact.html"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
           </article>
 
           <article class="plan plan--feature rv">
@@ -635,7 +601,7 @@
               <li data-i18n="plan2f4">Mise en lumière d'ambiance</li>
               <li data-i18n="plan2f5">Coordination & équipe le jour J</li>
             </ul>
-            <a class="plan__cta" data-wa href="#contact"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            <a class="plan__cta" data-wa href="contact.html"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
           </article>
 
           <article class="plan rv">
@@ -650,53 +616,16 @@
               <li data-i18n="plan3f4">Mobilier d'exception & lounge</li>
               <li data-i18n="plan3f5">Chef de projet dédié</li>
             </ul>
-            <a class="plan__cta" data-wa href="#contact"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
-          </article>
-
-          <article class="plan rv">
-            <div class="plan__top">
-              <h3 class="plan__name" data-i18n="plan5Name">Anniversaire & Privé</h3>
-              <p class="plan__price" dir="ltr">35 – 90 <i>k DA</i></p>
-            </div>
-            <ul class="plan__feats">
-              <li data-i18n="plan5f1">Décor thématique sur-mesure</li>
-              <li data-i18n="plan5f2">Ballons, fleurs & sweet table</li>
-              <li data-i18n="plan5f3">Mise en lumière & mobilier</li>
-              <li data-i18n="plan5f4">Installation & démontage inclus</li>
-            </ul>
-            <a class="plan__cta" data-wa href="#contact"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
-          </article>
-
-          <article class="plan rv">
-            <div class="plan__top">
-              <h3 class="plan__name" data-i18n="plan6Name">Location & Matériel</h3>
-              <p class="plan__price"><span class="plan__from" data-i18n="from">à partir de</span> <span dir="ltr">25 <i>k DA</i></span></p>
-            </div>
-            <ul class="plan__feats">
-              <li data-i18n="plan6f1">Chaises, tables & nappage</li>
-              <li data-i18n="plan6f2">Trône, mobilier & lounge</li>
-              <li data-i18n="plan6f3">Chapiteaux & structures</li>
-              <li data-i18n="plan6f4">Livraison, montage & reprise</li>
-            </ul>
-            <a class="plan__cta" data-wa href="#contact"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
-          </article>
-
-          <article class="plan rv">
-            <div class="plan__top">
-              <h3 class="plan__name" data-i18n="plan4Name">Corporate & Sur-mesure</h3>
-              <p class="plan__price plan__price--txt" data-i18n="plan4From">sur étude</p>
-            </div>
-            <ul class="plan__feats">
-              <li data-i18n="plan4f1">Séminaires, galas, lancements</li>
-              <li data-i18n="plan4f2">Conception scénographique dédiée</li>
-              <li data-i18n="plan4f3">Branding d'espace & signalétique</li>
-              <li data-i18n="plan4f4">Régie technique son & lumière</li>
-            </ul>
-            <a class="plan__cta" data-wa href="#contact"><span data-i18n="planCtaCustom">Parlons-en</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            <a class="plan__cta" data-wa href="contact.html"><span data-i18n="planCta">Demander ce devis</span><svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg></a>
           </article>
         </div>
 
-        <p class="pricing__legal rv" data-i18n="prLegal">Prix indicatifs en dinars algériens, hors location de salle. Réservation confirmée par acompte et contrat détaillé.</p>
+        <p class="pricing__more rv">
+          <a class="link-arrow link-arrow--ink" href="produits.html">
+            <span data-i18n="prMore">Découvrir tout le programme & la location</span>
+            <svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
+        </p>
       </div>
     </section>
 
@@ -726,7 +655,7 @@
             </blockquote>
           </div>
           <div class="qcar__ui">
-            <button class="qcar__btn" id="qPrev" type="button" aria-label="Témoignage précédent" data-i18n-aria="aPrev"><svg class="flip-rtl" style="transform:scaleX(-1)"><use href="#i-arr"/></svg></button>
+            <button class="qcar__btn" id="qPrev" type="button" aria-label="Témoignage précédent" data-i18n-aria="aPrev"><svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg></button>
             <span class="qcar__count" id="qCount" dir="ltr">1 / 3</span>
             <button class="qcar__btn" id="qNext" type="button" aria-label="Témoignage suivant" data-i18n-aria="aNext"><svg class="flip-rtl"><use href="#i-arr"/></svg></button>
           </div>
@@ -734,88 +663,34 @@
       </div>
     </section>
 
-    <!-- ═══════════════ ACTE VII — R.S.V.P. ═══════════════ -->
-    <section class="contact section section--stage" id="contact">
-      <div class="wrap contact__grid">
-        <div class="contact__intro">
-          <header class="act-head act-head--dark rv">
-            <span class="act-head__label" data-i18n="act7">Acte VII</span>
-            <span class="act-head__rule" aria-hidden="true"></span>
-            <span class="act-head__name" data-i18n="navContact">Contact</span>
-          </header>
-
-          <h2 class="section__title t-reveal" data-i18n="ctTitle">Réservez votre date.</h2>
-          <p class="contact__text rv" data-i18n="ctText">Le plus simple : un message WhatsApp. On vous répond vite, on cale un rendez-vous à l'atelier de Kouba ou en visio, et on dessine votre devis.</p>
-
-          <div class="contact__actions rv">
-            <a class="btn btn--gold" data-wa href="#">
-              <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
-              <span data-i18n="ctaWa">Écrire sur WhatsApp</span>
-            </a>
-            <a class="btn btn--ghost" data-mail href="#"><span data-i18n="ctaEmail">Envoyer un e-mail</span></a>
-            <a class="btn btn--ghost" data-call href="#"><span data-i18n="ctaCall">Appeler l'atelier</span></a>
-          </div>
-
-          <ul class="contact__details rv">
-            <li>
-              <span class="contact__lbl" data-i18n="cAddr">Atelier</span>
-              <span class="contact__val" data-i18n="cAddrVal">Kouba, Alger — adresse à préciser</span>
-            </li>
-            <li>
-              <span class="contact__lbl" data-i18n="cPhone">Téléphone / WhatsApp</span>
-              <span class="contact__val" dir="ltr" data-phone-display>+213 0 00 00 00 00</span>
-            </li>
-            <li>
-              <span class="contact__lbl" data-i18n="cMail">E-mail</span>
-              <span class="contact__val" dir="ltr" data-mail-display>contact@eventslabs.dz</span>
-            </li>
-            <li>
-              <span class="contact__lbl" data-i18n="cHours">Horaires</span>
-              <span class="contact__val" data-i18n="cHoursVal">Samedi – jeudi · 9h – 19h</span>
-            </li>
-          </ul>
+    <!-- ═══════════════ R.S.V.P. — bandeau final ═══════════════ -->
+    <section class="banner section section--stage" id="rsvp">
+      <canvas class="sparks" aria-hidden="true"></canvas>
+      <div class="wrap banner__inner">
+        <svg class="orn draw banner__lantern" viewBox="0 0 120 156" aria-hidden="true">
+          <circle cx="60" cy="10" r="6" pathLength="1"/>
+          <path d="M60 16 v10" pathLength="1"/>
+          <path d="M46 36 Q60 26 74 36 L80 46 H40 Z" pathLength="1"/>
+          <path d="M40 46 C 28 68 28 98 40 118 L80 118 C 92 98 92 68 80 46" pathLength="1"/>
+          <path d="M52 46 v72 M68 46 v72" pathLength="1"/>
+          <path d="M46 118 l-5 10 h38 l-5 -10" pathLength="1"/>
+          <path d="M60 128 v14" pathLength="1"/>
+          <circle cx="60" cy="147" r="4" pathLength="1"/>
+          <path d="M60 74 C 56 80 56 86 60 89 C 64 86 64 80 60 74Z" pathLength="1"/>
+          <path d="M98 64c.5 4 2.6 6.1 6.5 6.6-3.9.6-6 2.7-6.5 6.6-.5-3.9-2.6-6-6.5-6.6 3.9-.5 6-2.6 6.5-6.6Z" pathLength="1"/>
+        </svg>
+        <h2 class="banner__title t-reveal" data-i18n="bannerTitle">Une date en tête&nbsp;?</h2>
+        <p class="banner__text rv" data-i18n="bannerText">Racontez-nous votre projet — on vous répond dans la journée.</p>
+        <div class="banner__actions rv">
+          <a class="btn btn--gold" data-wa href="contact.html">
+            <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
+            <span data-i18n="bannerCta">Demander un devis</span>
+          </a>
+          <a class="btn btn--ghost" href="contact.html">
+            <span data-i18n="bannerAlt">Détailler mon projet</span>
+            <svg class="btn__ico btn__ico--arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
         </div>
-
-        <form class="rsvp rv" id="quoteForm" novalidate>
-          <div class="rsvp__head">
-            <svg class="rsvp__star" aria-hidden="true"><use href="#i-star"/></svg>
-            <span class="rsvp__title">R.S.V.P.</span>
-            <p class="rsvp__hint" data-i18n="formHint">Laissez-nous quelques infos — le formulaire prépare votre message WhatsApp.</p>
-          </div>
-
-          <div class="field">
-            <label for="f-name" data-i18n="fName">Votre nom</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required />
-          </div>
-          <div class="field field--row">
-            <div>
-              <label for="f-type" data-i18n="fType">Type d'événement</label>
-              <select id="f-type" name="type">
-                <option data-i18n="optWedding">Mariage</option>
-                <option data-i18n="optHenna">Henné / Fiançailles</option>
-                <option data-i18n="optGala">Gala / Soirée</option>
-                <option data-i18n="optCorp">Entreprise / Lancement</option>
-                <option data-i18n="optOther">Autre</option>
-              </select>
-            </div>
-            <div>
-              <label for="f-date" data-i18n="fDate">Date (approx.)</label>
-              <input id="f-date" name="date" type="text" placeholder="ex. août 2026" data-i18n-ph="fDatePh" />
-            </div>
-          </div>
-          <div class="field">
-            <label for="f-msg" data-i18n="fMsg">Votre projet en quelques mots</label>
-            <textarea id="f-msg" name="msg" rows="3"></textarea>
-          </div>
-
-          <div class="rsvp__actions">
-            <button class="btn btn--gold rsvp__submit" type="submit">
-              <svg class="btn__ico" aria-hidden="true"><use href="#i-wa"/></svg>
-              <span data-i18n="formSubmit">Envoyer sur WhatsApp</span>
-            </button>
-            <button class="btn btn--ghost btn--ink" type="button" id="quoteMail"><span data-i18n="formSubmitMail">Ou par e-mail</span></button>
-          </div>
-        </form>
       </div>
     </section>
   </main>
@@ -837,11 +712,10 @@
         <p class="footer__tag" data-i18n="footerTag">L'atelier qui met vos émotions en scène. Scénographie & décoration événementielle — Kouba, Alger.</p>
       </div>
       <nav class="footer__nav" aria-label="Pied de page">
-        <a href="#atelier" data-i18n="navAtelier">L'atelier</a>
-        <a href="#services" data-i18n="navServices">Savoir-faire</a>
-        <a href="#realisations" data-i18n="navReal">Réalisations</a>
-        <a href="#formules" data-i18n="navFormules">Programme</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="index.html" data-i18n="navHome">Accueil</a>
+        <a href="realisations.html" data-i18n="navReal">Réalisations</a>
+        <a href="produits.html" data-i18n="navProducts">Produits & Formules</a>
+        <a href="contact.html" data-i18n="navDevis">Contact & Devis</a>
       </nav>
       <div class="footer__social">
         <a href="https://www.instagram.com/eventslabs.dz" target="_blank" rel="noopener">Instagram</a>
@@ -851,18 +725,21 @@
     </div>
     <div class="wrap footer__bottom">
       <span>© <span id="year">2026</span> Events Labs — <span data-i18n="footerRights">Tous droits réservés.</span></span>
+      <a class="footer__top" href="#ouverture" data-i18n="backTop">Retour en haut ↑</a>
       <span class="footer__credit" data-i18n="footerMade">Conçu & fabriqué avec soin à Alger.</span>
     </div>
   </footer>
 
   <!-- Bouton WhatsApp flottant -->
-  <a class="fab-wa" data-wa href="#contact" aria-label="WhatsApp" data-i18n-aria="aWa">
+  <a class="fab-wa" data-wa href="contact.html" aria-label="WhatsApp" data-i18n-aria="aWa">
     <svg aria-hidden="true"><use href="#i-wa"/></svg>
   </a>
 
   <!-- Lightbox -->
   <dialog class="lightbox" id="lightbox" aria-label="Aperçu de la réalisation">
     <button class="lightbox__close" type="button" aria-label="Fermer" data-i18n-aria="aClose">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Précédent" data-i18n-aria="aPrev"><svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg></button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Suivant" data-i18n-aria="aNext"><svg><use href="#i-arr"/></svg></button>
     <div class="lightbox__inner"></div>
   </dialog>
 
