@@ -1630,11 +1630,157 @@ html[lang="ar"] .phero__title { line-height: 1.25; }
   .lightbox__nav--next { right: 8px; }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   POLISH « RÉFÉRENCE EUROPÉENNE »
+   Transitions de page · index éditorial à aperçu curseur · titre-vidéo ·
+   boutons magnétiques · lettrine
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Transition de page (changement de scène) ─────────────────────────── */
+/* Sortie : voile velours injecté qui monte pour couvrir */
+.pt {
+  position: fixed; inset: 0;
+  z-index: 9400;
+  display: grid; place-items: center;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(0,0,0,.34) 0 9px, rgba(0,0,0,0) 9px 36px,
+      rgba(236,197,126,.05) 36px 38px, rgba(0,0,0,0) 38px 64px),
+    linear-gradient(180deg, #3a1420, var(--velvet) 55%, #160810);
+  transform: translateY(100%);
+  will-change: transform;
+}
+.pt.is-cover { transform: translateY(0); transition: transform .6s var(--e-io); }
+.pt__star { width: 30px; height: 30px; fill: var(--flame); opacity: .9; animation: starspin 6s linear infinite; }
+
+/* Entrée : voile posé au premier rendu (via classe sur <html>) qui se retire */
+.pt-cover::before {
+  content: "";
+  position: fixed; inset: 0;
+  z-index: 9400;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(0,0,0,.34) 0 9px, rgba(0,0,0,0) 9px 36px,
+      rgba(236,197,126,.05) 36px 38px, rgba(0,0,0,0) 38px 64px),
+    linear-gradient(180deg, #3a1420, var(--velvet) 55%, #160810);
+}
+.pt-cover.pt-open::before { transform: translateY(-100%); transition: transform .7s var(--e-io); }
+
+/* ── Index éditorial « Répertoire » à aperçu curseur ──────────────────── */
+.repertoire .index { border-top: 1px solid var(--line-gold); margin-top: clamp(24px, 3vw, 40px); }
+.index__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: baseline;
+  gap: clamp(14px, 3vw, 40px);
+  padding: clamp(16px, 2.4vw, 30px) 4px;
+  border-bottom: 1px solid var(--line-gold);
+  cursor: pointer;
+  transition: padding-inline-start .5s var(--e-out), opacity .4s ease;
+}
+.index__row:hover { padding-inline-start: 18px; }
+/* Les autres lignes s'estompent quand une ligne est survolée */
+.index.is-hovering .index__row:not(:hover) { opacity: .4; }
+.index__no {
+  font-family: var(--f-mono); font-size: .7rem;
+  letter-spacing: .12em; color: var(--brass);
+}
+.index__name {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 3.8vw, 3.2rem);
+  line-height: 1.06;
+  color: var(--paper);
+  transition: color .35s ease;
+}
+.index__row:hover .index__name { font-style: italic; color: var(--flame); }
+html[lang="ar"] .index__row:hover .index__name { font-style: normal; }
+.index__meta {
+  font-family: var(--f-mono); font-size: .6rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ivory-soft);
+  white-space: nowrap;
+}
+.index__arr { width: 20px; height: 20px; fill: none; stroke: var(--brass); opacity: 0; transform: translateX(-8px); transition: opacity .35s ease, transform .35s var(--e-out); }
+.index__row:hover .index__arr { opacity: 1; transform: none; }
+@media (max-width: 640px) {
+  .index__row { grid-template-columns: auto 1fr auto; }
+  .index__meta { display: none; }
+}
+/* Aperçu flottant qui suit le curseur */
+.index__peek {
+  position: fixed; top: 0; left: 0;
+  z-index: 40;
+  width: clamp(200px, 20vw, 300px);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.9);
+  transition: opacity .35s ease, transform .5s var(--e-out);
+  outline: 1px solid rgba(236,197,126,.5);
+  outline-offset: 5px;
+  box-shadow: 0 30px 70px -30px rgba(0,0,0,.9);
+}
+.index__peek.is-on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.index__peek img, .index__peek video { width: 100%; height: 100%; object-fit: cover; }
+@media (hover: none), (pointer: coarse) { .index__peek { display: none; } }
+
+/* ── Titre rempli par la vidéo (video-in-text) ────────────────────────── */
+.cutout {
+  position: relative;
+  height: clamp(180px, 34vw, 440px);
+  background: var(--stage);
+  overflow: hidden;
+  border-block: 1px solid var(--line-gold);
+}
+.cutout__vid {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.9) contrast(1.05) brightness(1.05);
+}
+.cutout__mask { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cutout__mask > rect { fill: var(--stage); }
+.cutout__cap {
+  position: absolute; z-index: 2;
+  inset-inline-start: clamp(16px, 4vw, 56px);
+  bottom: clamp(14px, 2.4vw, 28px);
+  font-family: var(--f-mono); font-size: .6rem;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--brass);
+}
+
+/* ── Boutons magnétiques ──────────────────────────────────────────────── */
+.btn--gold, .fab-wa { will-change: transform; }
+
+/* ── Lettrine (éditorial) ─────────────────────────────────────────────── */
+body { font-feature-settings: "liga" 1, "kern" 1; }
+.atelier__lead::first-letter {
+  float: inline-start;
+  font-family: "Bodoni Moda", serif;
+  font-style: normal;
+  font-size: 3.4em;
+  line-height: .8;
+  padding-inline-end: .08em;
+  padding-top: .04em;
+  color: var(--brass-dim);
+}
+html[lang="ar"] .atelier__lead::first-letter { float: none; font-size: 1em; color: inherit; padding: 0; }
+
+/* Marquee piloté en JS (réactif au scroll) : neutralise l'anim CSS */
+.js-marq { animation: none !important; }
+
 /* ── Réduction de mouvement ───────────────────────────────────────────── */
 html.no-motion .grain { animation: none; }
 html.no-motion .curtain { display: none; }
 html.no-motion .sparks { display: none; }
+html.no-motion .pt, html.no-motion .pt-cover::before { display: none; }
+html.no-motion .index__peek { display: none; }
 html.no-motion .hero__scroll-line,
 html.no-motion .hero__eyebrow-star,
 html.no-motion .hero__avail-dot,
+html.no-motion .cutout__vid,
+html.no-motion .pt__star,
 html.no-motion .curtain__star { animation: none; }

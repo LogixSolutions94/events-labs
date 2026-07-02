@@ -102,6 +102,8 @@ window.EL_I18N = {
     rpLabel: "La galerie",
     rpTitle: "Chaque événement est une première.",
     rpLead: "Mariages, traditions, galas, corporate — parcourez nos mises en scène. Filtrez par univers, cliquez pour entrer dans le décor.",
+    repLabel: "Répertoire", repLead: "Survolez un titre — le décor apparaît.",
+    cutWord: "Fête", cutCap: "Mettre la fête en scène",
 
     ppLabel: "Programme & location",
     ppTitle: "Le programme de votre soirée.",
@@ -248,6 +250,8 @@ window.EL_I18N = {
     rpLabel: "المعرض",
     rpTitle: "كل مناسبة عرضٌ أوّل.",
     rpLead: "أعراس، تقاليد، حفلات، مؤسسات — تصفّحوا إخراجاتنا. رشّحوا حسب العالم، وانقروا لدخول الديكور.",
+    repLabel: "الفهرس", repLead: "مرّر فوق عنوان ليظهر الديكور.",
+    cutWord: "فرح", cutCap: "نُخرج الفرح على المسرح",
 
     ppLabel: "الصيغ والتأجير",
     ppTitle: "برنامج سهرتكم.",
@@ -394,6 +398,8 @@ window.EL_I18N = {
     rpLabel: "The gallery",
     rpTitle: "Every event is an opening night.",
     rpLead: "Weddings, traditions, galas, corporate — browse our stagings. Filter by world, click to step into the décor.",
+    repLabel: "Index", repLead: "Hover a title — the décor appears.",
+    cutWord: "Joie", cutCap: "Staging celebration",
 
     ppLabel: "Packages & rental",
     ppTitle: "The programme of your evening.",

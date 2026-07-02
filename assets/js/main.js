@@ -62,7 +62,10 @@ function applyLang(lang) {
 
   $$("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if (dict[key] != null) el.innerHTML = dict[key];
+    if (dict[key] == null) return;
+    // SVG <text> n'accepte pas innerHTML de façon fiable
+    if (el.namespaceURI === "http://www.w3.org/2000/svg") el.textContent = dict[key];
+    else el.innerHTML = dict[key];
   });
   $$("[data-i18n-aria]").forEach(el => {
     const key = el.getAttribute("data-i18n-aria");
@@ -139,9 +142,11 @@ const progressBar = $(".progress__bar");
 const fab = $(".fab-wa");
 const hero = $(".hero");
 let lastY = 0;
+let scrollVel = 0; // vélocité de défilement partagée (marquees réactifs)
 
 function onScroll() {
   const y = window.scrollY;
+  scrollVel = y - lastY;
   if (header) {
     header.classList.toggle("is-scrolled", y > 40);
     header.classList.toggle("is-hidden", y > 420 && y > lastY && !document.body.classList.contains("menu-open"));
@@ -463,51 +468,54 @@ if (!REDUCE) {
 const lightbox = $("#lightbox");
 if (lightbox) {
   const lbInner = $(".lightbox__inner");
-  let lbIndex = 0;
+  const fill = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
+  let lbList = [], lbIndex = 0;
 
-  const visibleShots = () => $$(".shot").filter(s => !s.classList.contains("is-hidden"));
-
-  function renderLightbox(shot) {
-    const cat = $(".shot__cat", shot)?.textContent || "";
-    const name = $(".shot__name", shot)?.textContent || "";
+  function shotToDesc(shot) {
     const vid = $(".shot__video", shot);
     const img = $(".shot__media img", shot);
-    const fill = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
-    let media = "";
-    if (vid) {
-      const src = vid.getAttribute("src") || vid.dataset.src;
-      media = `<video src="${src}" autoplay loop muted playsinline controls style="${fill}"></video>`;
-    } else if (img) {
-      media = `<img src="${img.src}" alt="" style="${fill}" />`;
-    }
-    lbInner.innerHTML = media + `<div class="lb-cap"><span class="lb-cat">${cat}</span><span class="lb-name">${name}</span></div>`;
+    return {
+      type: vid ? "video" : "img",
+      src: vid ? (vid.getAttribute("src") || vid.dataset.src) : (img ? img.src : ""),
+      cat: $(".shot__cat", shot)?.textContent || "",
+      name: $(".shot__name", shot)?.textContent || ""
+    };
   }
 
-  function openLightbox(shot) {
-    lbIndex = visibleShots().indexOf(shot);
-    renderLightbox(shot);
+  function render(d) {
+    const media = d.type === "video"
+      ? `<video src="${d.src}" autoplay loop muted playsinline controls style="${fill}"></video>`
+      : `<img src="${d.src}" alt="" style="${fill}" />`;
+    lbInner.innerHTML = media + `<div class="lb-cap"><span class="lb-cat">${d.cat}</span><span class="lb-name">${d.name}</span></div>`;
+  }
+
+  function openLb(list, i) {
+    lbList = list; lbIndex = i;
+    render(lbList[lbIndex]);
     if (typeof lightbox.showModal === "function") lightbox.showModal();
   }
-  function stepLightbox(dir) {
-    const list = visibleShots();
-    if (!list.length) return;
-    lbIndex = (lbIndex + dir + list.length) % list.length;
-    renderLightbox(list[lbIndex]);
+  function stepLb(dir) {
+    if (!lbList.length) return;
+    lbIndex = (lbIndex + dir + lbList.length) % lbList.length;
+    render(lbList[lbIndex]);
   }
+  // Exposé pour l'index éditorial
+  window.EL_LIGHTBOX = { open: openLb, step: stepLb, shotToDesc };
 
   $$(".shot").forEach(shot => shot.addEventListener("click", () => {
     if (strip && strip.classList.contains("is-dragging")) return;
-    openLightbox(shot);
+    const visible = $$(".shot").filter(s => !s.classList.contains("is-hidden"));
+    openLb(visible.map(shotToDesc), visible.indexOf(shot));
   }));
   $(".lightbox__close")?.addEventListener("click", () => lightbox.close());
-  $(".lightbox__nav--prev")?.addEventListener("click", () => stepLightbox(-1));
-  $(".lightbox__nav--next")?.addEventListener("click", () => stepLightbox(1));
+  $(".lightbox__nav--prev")?.addEventListener("click", () => stepLb(-1));
+  $(".lightbox__nav--next")?.addEventListener("click", () => stepLb(1));
   lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.close(); });
   lightbox.addEventListener("close", () => { lbInner.innerHTML = ""; });
   window.addEventListener("keydown", e => {
     if (!lightbox.open) return;
-    if (e.key === "ArrowRight") stepLightbox(1);
-    if (e.key === "ArrowLeft") stepLightbox(-1);
+    if (e.key === "ArrowRight") stepLb(1);
+    if (e.key === "ArrowLeft") stepLb(-1);
   });
 }
 
@@ -580,3 +588,168 @@ if (form) {
    ========================================================================= */
 const yearEl = $("#year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* =========================================================================
+   19. Index éditorial « Répertoire » — aperçu qui suit le curseur
+   ========================================================================= */
+const indexList = $("[data-index]");
+if (indexList) {
+  const rows = $$(".index__row", indexList);
+  const peek = $(".index__peek");
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  const descOf = row => ({
+    type: row.dataset.type || "img",
+    src: row.dataset.media || "",
+    cat: $(".index__meta", row)?.textContent || "",
+    name: $(".index__name", row)?.textContent || ""
+  });
+
+  if (fine && peek && !REDUCE) {
+    let px = innerWidth / 2, py = innerHeight / 2, tx = px, ty = py, active = false;
+    (function loop() {
+      px += (tx - px) * 0.16; py += (ty - py) * 0.16;
+      peek.style.transform = `translate(${px}px, ${py}px) translate(-50%, -50%) scale(${active ? 1 : .9})`;
+      requestAnimationFrame(loop);
+    })();
+    indexList.addEventListener("pointermove", e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+    rows.forEach(row => {
+      row.addEventListener("pointerenter", e => {
+        tx = e.clientX; ty = e.clientY;
+        indexList.classList.add("is-hovering");
+        const d = descOf(row);
+        peek.innerHTML = d.type === "video"
+          ? `<video src="${d.src}" autoplay loop muted playsinline></video>`
+          : `<img src="${d.src}" alt="" />`;
+        active = true; peek.classList.add("is-on");
+      });
+    });
+    indexList.addEventListener("pointerleave", () => {
+      indexList.classList.remove("is-hovering");
+      active = false; peek.classList.remove("is-on");
+    });
+  }
+
+  rows.forEach((row, i) => {
+    row.addEventListener("click", () => {
+      if (window.EL_LIGHTBOX) window.EL_LIGHTBOX.open(rows.map(descOf), i);
+    });
+    row.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); row.click(); }
+    });
+  });
+}
+
+/* =========================================================================
+   20. Transitions de page « changement de scène »
+   ========================================================================= */
+(function pageTransitions() {
+  const html = document.documentElement;
+
+  // Entrée : retirer le voile posé au premier rendu (classe injectée par <head>)
+  if (html.classList.contains("pt-cover")) {
+    requestAnimationFrame(() => {
+      html.classList.add("pt-open");
+      setTimeout(() => html.classList.remove("pt-cover", "pt-open"), 780);
+    });
+  }
+  try { sessionStorage.removeItem("el-pt"); } catch (e) {}
+
+  if (REDUCE) return;
+
+  const STAR = '<svg class="pt__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.9 6.9 4.9 10.9 12 12-7.1 1.1-11.1 5.1-12 12-.9-6.9-4.9-10.9-12-12C7.1 10.9 11.1 6.9 12 0Z"/></svg>';
+  let leaving = false;
+
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a");
+    if (!a || leaving) return;
+    if (a.target === "_blank" || a.hasAttribute("download")) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const raw = a.getAttribute("href");
+    if (!raw || raw.charAt(0) === "#") return;
+    let url;
+    try { url = new URL(a.href, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin) return;       // externe (wa.me, mailto, réseaux)
+    if (url.pathname === location.pathname) return;    // même page (ancre)
+    if (!/\.html?$/.test(url.pathname)) return;        // uniquement les pages du site
+
+    e.preventDefault();
+    leaving = true;
+    try { sessionStorage.setItem("el-pt", "1"); } catch (_) {}
+    const pt = document.createElement("div");
+    pt.className = "pt";
+    pt.innerHTML = STAR;
+    document.body.appendChild(pt);
+    requestAnimationFrame(() => requestAnimationFrame(() => pt.classList.add("is-cover")));
+    setTimeout(() => { location.href = url.href; }, 620);
+  });
+
+  // Retour via bfcache : purge tout voile résiduel
+  window.addEventListener("pageshow", e => {
+    if (e.persisted) {
+      $(".pt")?.remove();
+      html.classList.remove("pt-cover", "pt-open");
+      leaving = false;
+    }
+  });
+})();
+
+/* =========================================================================
+   21. Boutons magnétiques (desktop, pointeur fin)
+   ========================================================================= */
+if (!REDUCE && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  $$(".btn--gold").forEach(btn => {
+    const strength = 0.28, max = 12;
+    btn.addEventListener("pointermove", e => {
+      const r = btn.getBoundingClientRect();
+      let dx = (e.clientX - (r.left + r.width / 2)) * strength;
+      let dy = (e.clientY - (r.top + r.height / 2)) * strength;
+      dx = Math.max(-max, Math.min(max, dx));
+      dy = Math.max(-max, Math.min(max, dy));
+      btn.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    btn.addEventListener("pointerleave", () => {
+      btn.style.transition = "transform .4s cubic-bezier(.19,1,.22,1)";
+      btn.style.transform = "";
+      setTimeout(() => { btn.style.transition = ""; }, 420);
+    });
+  });
+}
+
+/* =========================================================================
+   22. Marquees réactifs au scroll (ticker + footer)
+   ========================================================================= */
+if (!REDUCE) {
+  const tracks = $$(".ticker__track, .footer__marquee-track").map(el => {
+    el.parentElement.classList.add("js-marq");
+    return { el, x: 0, half: el.scrollWidth / 2, base: 0.4 };
+  });
+  if (tracks.length) {
+    window.addEventListener("resize", () => tracks.forEach(t => { t.half = t.el.scrollWidth / 2; }));
+    (function step() {
+      scrollVel *= 0.9;
+      const boost = Math.max(-60, Math.min(60, scrollVel)) * 0.55;
+      tracks.forEach(t => {
+        t.x -= t.base + boost;
+        if (t.half > 0) {
+          if (t.x <= -t.half) t.x += t.half;
+          else if (t.x > 0) t.x -= t.half;
+        }
+        t.el.style.transform = `translateX(${t.x}px)`;
+      });
+      requestAnimationFrame(step);
+    })();
+  }
+}
+
+/* =========================================================================
+   23. Titre rempli par la vidéo : chargement + lecture en vue
+   ========================================================================= */
+$$(".cutout__vid").forEach(v => {
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+      if (!v.getAttribute("src") && v.dataset.src) v.setAttribute("src", v.dataset.src);
+      if (!REDUCE) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    } else { v.pause(); }
+  }, { threshold: 0.1 }).observe(v));
+});

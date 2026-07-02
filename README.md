@@ -106,6 +106,23 @@ Lucioles dorées (canvas) sur les fonds de scène, et ornements en filet d'or
 (contact), lanterne fanous (bandeaux R.S.V.P.). Aucune référence à l'alcool —
 site pensé pour le marché algérien.
 
+### Finitions « référence européenne »
+
+Inspirées des meilleures agences de scénographie d'Europe (Bureau Betak,
+Villa Eugénie…) :
+
+- **Transitions de page « changement de scène »** — un voile de velours balaie
+  l'écran entre chaque page (prolonge le rideau d'ouverture).
+- **Répertoire à aperçu curseur** (page Réalisations) — un index éditorial où
+  survoler un titre fait apparaître le décor en vignette qui suit la souris.
+- **Titre rempli par la vidéo** (landing) — le mot « Fête » découpé, la vidéo
+  d'événement joue à l'intérieur des lettres (masque SVG).
+- **Boutons magnétiques**, **marquees réactifs au scroll**, **lettrine**
+  éditoriale sur le manifeste de l'atelier.
+
+Tout est en CSS/JS vanilla, sans WebGL ni dépendance (léger pour le mobile),
+et se désactive proprement avec `prefers-reduced-motion`.
+
 ## Vidéo du hero
 
 Le fond du hero est une vidéo : `assets/video/hero.mp4`. Source : **Mixkit** —

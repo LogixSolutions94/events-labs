@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=Fragment+Mono&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>try{if(sessionStorage.getItem("el-pt")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("pt-cover")}}catch(e){}</script>
 </head>
 
 <body data-page="work">
@@ -122,6 +123,68 @@
         <h1 class="phero__title t-reveal" data-i18n="rpTitle">Chaque événement est une première.</h1>
         <p class="phero__lead rv" data-i18n="rpLead">Mariages, traditions, galas, corporate — parcourez nos mises en scène. Filtrez par univers, cliquez pour entrer dans le décor.</p>
       </div>
+    </section>
+
+    <!-- Répertoire : index éditorial à aperçu curseur -->
+    <section class="repertoire section section--stage section--tight" style="padding-top: clamp(50px, 6vw, 90px);">
+      <div class="wrap">
+        <header class="act-head act-head--dark rv">
+          <span class="act-head__label" data-i18n="repLabel">Répertoire</span>
+          <span class="act-head__rule" aria-hidden="true"></span>
+          <span class="act-head__name" data-i18n="repLead">Survolez un titre — le décor apparaît.</span>
+        </header>
+        <ul class="index" data-index>
+          <li class="index__row" tabindex="0" role="button" data-type="video" data-media="assets/video/work1.mp4">
+            <span class="index__no">01</span>
+            <span class="index__name" data-i18n="proj1">Kosha « Nuit d'ambre »</span>
+            <span class="index__meta" data-i18n="capMariage">Mariage</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="video" data-media="assets/video/work2.mp4">
+            <span class="index__no">02</span>
+            <span class="index__name" data-i18n="proj2">Soirée henné « Safran »</span>
+            <span class="index__meta" data-i18n="capTradition">Henné</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="video" data-media="assets/video/work3.mp4">
+            <span class="index__no">03</span>
+            <span class="index__name" data-i18n="proj3">Dîner de gala « Laiton »</span>
+            <span class="index__meta" data-i18n="capGala">Gala</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="img" data-media="assets/img/realisations/corp.jpg">
+            <span class="index__no">04</span>
+            <span class="index__name" data-i18n="proj4">Lancement « Studio 21 »</span>
+            <span class="index__meta" data-i18n="capCorporate">Corporate</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="video" data-media="assets/video/work5.mp4">
+            <span class="index__no">05</span>
+            <span class="index__name" data-i18n="proj5">Allée & arche florale</span>
+            <span class="index__meta" data-i18n="capMariage">Mariage</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="img" data-media="assets/img/realisations/gala.jpg">
+            <span class="index__no">06</span>
+            <span class="index__name" data-i18n="proj6">Mise en lumière « Velours »</span>
+            <span class="index__meta" data-i18n="capGala">Gala</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="img" data-media="assets/img/realisations/wed.jpg">
+            <span class="index__no">07</span>
+            <span class="index__name" data-i18n="proj7">Table d'honneur « Roseraie »</span>
+            <span class="index__meta" data-i18n="capMariage">Mariage</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+          <li class="index__row" tabindex="0" role="button" data-type="img" data-media="assets/img/realisations/fianc.jpg">
+            <span class="index__no">08</span>
+            <span class="index__name" data-i18n="proj8">Fiançailles « Éclat »</span>
+            <span class="index__meta" data-i18n="capFiancailles">Fiançailles</span>
+            <svg class="index__arr flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
+          </li>
+        </ul>
+      </div>
+      <figure class="index__peek" aria-hidden="true"></figure>
     </section>
 
     <!-- Galerie complète -->

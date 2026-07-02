@@ -40,6 +40,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
+  <!-- Transition de page : pose le voile avant le premier rendu si on arrive d'une autre page -->
+  <script>try{if(sessionStorage.getItem("el-pt")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("pt-cover")}}catch(e){}</script>
+
   <!-- Structured data : entreprise locale -->
   <script type="application/ld+json">
   {
@@ -484,6 +487,21 @@
           <svg class="flip-rtl" aria-hidden="true"><use href="#i-arr"/></svg>
         </a>
       </p>
+    </section>
+
+    <!-- ═══════════════ INTERLUDE — TITRE REMPLI PAR LA VIDÉO ═══════════════ -->
+    <section class="cutout" aria-label="Events Labs">
+      <video class="cutout__vid" muted loop playsinline preload="none" poster="assets/img/hero-poster.svg" data-src="assets/video/hero.mp4"></video>
+      <svg class="cutout__mask" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <mask id="cutmask">
+            <rect x="0" y="0" width="1000" height="300" fill="#fff"/>
+            <text x="500" y="216" text-anchor="middle" font-family="'Bodoni Moda', serif" font-style="italic" font-weight="600" font-size="250" fill="#000" textLength="880" lengthAdjust="spacingAndGlyphs" data-i18n="cutWord">Fête</text>
+          </mask>
+        </defs>
+        <rect x="0" y="0" width="1000" height="300" mask="url(#cutmask)"/>
+      </svg>
+      <span class="cutout__cap" data-i18n="cutCap">Mettre la fête en scène</span>
     </section>
 
     <!-- ═══════════════ ACTE IV — L'APPROCHE ═══════════════ -->
